@@ -1,0 +1,22 @@
+[
+    {
+        "roundNumber": 1,
+        "startAddress": "6/79 Macleod rd Applecross 6153",
+        "hazards": []
+    },
+    {
+        "roundNumber": 2,
+        "startAddress": "63 Dunkley rd Applecross 6153",
+        "hazards": []
+    },
+    {
+        "roundNumber": 3,
+        "startAddress": "20 Bombard st Ardross 6153",
+        "hazards": []
+    },
+    {
+        "roundNumber": 4,
+        "startAddress": "12 Moreau Mews Applecross 6153",
+        "hazards": []
+    }
+]

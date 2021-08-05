@@ -1,35 +1,28 @@
 const express = require('express'); 
-const {ApolloServer} = require('apollo-server-express') 
+const { ApolloServer } = require('apollo-server-express') 
 const logger = require('morgan') 
-const path = require('path') 
-const connectDb = require('./config/connection') 
 const { typeDefs, resolvers } = require('./schemas') 
-const { authMiddleware } = require('./utils/auth') 
+const db = require('./config/connection') 
 
+const PORT = process.env.PORT || 3001;
 const app = express();
-const PORT = process.env.PORT || 3000;
 
 const server = new ApolloServer({
     typeDefs,
-    resolvers,
-    context: authMiddleware,
+    resolvers
   });
+
+  server.applyMiddleware({ app });
+  app.use(express.urlencoded({extended: false}));
+  app.use(express.json());
+  app.use(logger('dev'));
   
-server.applyMiddleware({ app });
+  
 
-app.use(express.urlencoded({extended: true}));
-app.use(express.json());
-app.use(logger('dev'));
 
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '../client/build')));
-  }
-
-app.get('*', (req, res) => {
-res.sendFile(path.join(__dirname, '../client/build/index.html'));
-});
-
-connectDb()
-app.listen(PORT, () => {
-    console.log(`server running on port ${PORT}!`);
+db.once('open', () => {
+  app.listen(PORT, () => {
+    console.log(`API server running on port ${PORT}!`);
+    console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
+  });
 });
