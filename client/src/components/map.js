@@ -16,7 +16,7 @@ const mapTheme = ["5ef80f0325514b92"]
 function Map() {
   return (
     <LoadScript
-      googleMapsApiKey="AIzaSyArt4QZtuOr-ro5duk7cqHKbNB6lPSJSHY"
+      googleMapsApiKey={REACT_APP_GOOGLE_API_KEY}
       mapIds={mapTheme}
     >
       <GoogleMap
