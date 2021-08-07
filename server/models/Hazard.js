@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const Round = require('./Round');
 
 const hazardSchema = new Schema({
     roundNumber: {
@@ -6,6 +7,10 @@ const hazardSchema = new Schema({
         required: [true, 'Please enter this round number'],
         min: 1,
         max: 100
+    },
+    round: {
+        type: Schema.Types.ObjectId,
+        ref: 'Round'
     },
     hazardType: {
         type: String,

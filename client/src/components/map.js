@@ -1,6 +1,7 @@
 import React from 'react'
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
 
+
 const containerStyle = {
   width: '80vw',
   height: '80vh',
@@ -16,7 +17,7 @@ const mapTheme = ["5ef80f0325514b92"]
 function Map() {
   return (
     <LoadScript
-      googleMapsApiKey={REACT_APP_GOOGLE_API_KEY}
+      googleMapsApiKey={process.env.REACT_APP_GOOGLE_API_KEY}
       mapIds={mapTheme}
     >
       <GoogleMap

@@ -8,7 +8,7 @@
         "imageFile": "",
         "location": "41 Macleod rd Applecross 6153",
         "createdAt": "",
-        "creater": "Hades"
+        "creator": "Hades"
     },
     {
         "roundNumber": 2,
@@ -19,7 +19,7 @@
         "imageFile": "",
         "location": "101 Tweeddale rd Applecross 6153",
         "createdAt": "",
-        "creater": "Simba"
+        "creator": "Simba"
     },
     {
         "roundNumber": 3,
@@ -30,7 +30,7 @@
         "imageFile": "",
         "location": "6 Duncraig rd Applecross 6153",
         "createdAt": "",
-        "creater": "Dean"
+        "creator": "Dean"
     },
     {
         "roundNumber": 4,
@@ -41,7 +41,7 @@
         "imageFile": "",
         "location": "20 Gibson st Ardross 6153",
         "createdAt": "",
-        "creater": "arnold"
+        "creator": "arnold"
     },
     {
         "roundNumber": 1,
@@ -52,7 +52,7 @@
         "imageFile": "",
         "location": "908 canning hwy Applecross 6153",
         "createdAt": "",
-        "creater": "john"
+        "creator": "john"
     },
     {
         "roundNumber": 2,
@@ -63,6 +63,6 @@
         "imageFile": "",
         "location": "7 sleet st Applecross 6153",
         "createdAt": "",
-        "creater": "Hades"
+        "creator": "Hades"
     }
 ]

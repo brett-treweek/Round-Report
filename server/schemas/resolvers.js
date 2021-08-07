@@ -2,8 +2,9 @@ const { Round, User, Hazard } = require('../models')
 
 const resolvers = {
     Query: {
-        GetAllRounds: async () => {
-            return  await Round.find({});
+        GetAllRounds: async (parent, { hazards, _id }) => {
+            
+            return  await Round.find().populate('hazards');
         },
         GetOneRound: async (parent, { _id }) => {
             const params = _id ? { _id } : {}

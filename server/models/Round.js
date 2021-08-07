@@ -4,7 +4,6 @@ const roundSchema = new Schema({
 roundNumber: {
     type: Number,
     required: true,
-    unique: true,
     min: 1,
     max: 100
 },

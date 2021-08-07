@@ -1,30 +1,28 @@
-const db = require('../config/connection');
-const { Round, Hazard } = require('../models');
+const db = require("../config/connection");
+const { Round, Hazard } = require("../models");
 
-const roundData = require('./roundData.json');
-const hazardData = require('./hazardData.json');
+const roundData = require("./roundData.json");
+const hazardData = require("./hazardData.json");
 
-db.once('open', async () => {
+db.once("open", async () => {
   await Round.deleteMany({});
   await Hazard.deleteMany({});
 
-  const round = await Round.insertMany(roundData);
-  const hazard = await Hazard.insertMany(hazardData);
+  const rnd = await Round.insertMany(roundData);
+  const haz = await Hazard.insertMany(hazardData);
 
-  // const tempRound = [...round]
-  // const tempHazard = [...hazard]
-  // console.log(tempRound);
-
-  // tempRound.forEach(item => {
-  //   if (item.roundNumber === tempHazard.roundNumber) {
-  //     tempRound.hazards.push(tempHazard._id)
-  //     tempRound.save()
-  //   }
-  // });
-    
+  rnd.forEach(async (round) => {
+    const id = round._id;
+    haz.forEach((haz) => {
+      if (round.roundNumber === haz.roundNumber) {
+        round.hazards.push(haz);
+      }
+    });
+  });
+  await Round.deleteMany({});
+  await Round.insertMany(rnd);
   
 
-  console.log('Rounds and Hazards seeded!');
+  console.log("Rounds and Hazards seeded!!!");
   process.exit(0);
 });
-
