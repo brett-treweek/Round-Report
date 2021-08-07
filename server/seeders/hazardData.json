@@ -1,6 +1,7 @@
 [
     {
         "roundNumber": 1,
+        "round": null,
         "hazardType": "dog",
         "title": "Mad dog",
         "message": "Cerberus is loose",
@@ -12,6 +13,7 @@
     },
     {
         "roundNumber": 2,
+        "round": null,
         "hazardType": "cat",
         "title": "stray cat",
         "message": "here kitty, kitty",
@@ -23,6 +25,7 @@
     },
     {
         "roundNumber": 3,
+        "round": null,
         "hazardType": "blind driveway",
         "title": "Invisible car",
         "message": "watch out for crazy driver",
@@ -34,6 +37,7 @@
     },
     {
         "roundNumber": 4,
+        "round": null,
         "hazardType": "magpie",
         "title": "The red baron is alive!",
         "message": "death from above",
@@ -45,6 +49,7 @@
     },
     {
         "roundNumber": 1,
+        "round": null,
         "hazardType": "roadworks",
         "title": "road closed",
         "message": "avoid road",
@@ -56,6 +61,7 @@
     },
     {
         "roundNumber": 2,
+        "round": null,
         "hazardType": "slippery driveway",
         "title": "dangerous driveway",
         "message": "slippery when wet",

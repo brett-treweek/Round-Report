@@ -32,7 +32,7 @@ const typeDefs = gql`
 
     type Query {
         GetAllRounds: [Round]
-        GetOneRound(_id: ID!): Round
+        GetOneRound(roundNumber: Int): Round
         GetAllHazards: [Hazard]
         GetOneHazard(_id: ID!): Hazard
         GetUser: User 
