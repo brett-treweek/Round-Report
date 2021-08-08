@@ -1,5 +1,5 @@
 const db = require("../config/connection");
-const { Round, Hazard } = require("../models");
+const { Round, Hazard, User } = require("../models");
 
 const roundData = require("./roundData.json");
 const hazardData = require("./hazardData.json");
@@ -7,13 +7,20 @@ const hazardData = require("./hazardData.json");
 db.once("open", async () => {
   await Round.deleteMany({});
   await Hazard.deleteMany({});
+  await User.deleteMany({});
 
   const rnd = await Round.insertMany(roundData);
   const haz = await Hazard.insertMany(hazardData);
+  await User.create({
+    firstName: 'Brett',
+    lastName: 'Treweek',
+    email: 'brett@mail.com',
+    password: 'qwerty123',
+    hazards: []
+  });
 
   // populating rounds with hazards
   rnd.forEach(async (round) => {
-    const id = round._id;
     haz.forEach((haz) => {
       if (round.roundNumber === haz.roundNumber) {
         round.hazards.push(haz);

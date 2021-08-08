@@ -1,35 +1,21 @@
 import { useReducer } from "react";
 import {
-  UPDATE_PRODUCTS,
-  UPDATE_CATEGORIES,
-  UPDATE_CURRENT_CATEGORY
+  UPDATE_HAZARDS
 } from "./actions";
 
 export const reducer = (state, action) => {
   switch (action.type) {
-    case UPDATE_PRODUCTS:
+    case UPDATE_HAZARDS:
       return {
         ...state,
-        products: [...action.products],
+        hazards: [...action.products],
       };
-
-    case UPDATE_CATEGORIES:
-      return {
-        ...state,
-        categories: [...action.categories],
-      };
-
-    case UPDATE_CURRENT_CATEGORY:
-      return {
-        ...state,
-        currentCategory: action.currentCategory
-      }
 
     default:
       return state;
   }
 };
 
-export function useProductReducer(initialState) {
+export function useHazardReducer(initialState) {
   return useReducer(reducer, initialState)
 }

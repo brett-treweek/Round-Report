@@ -5,17 +5,22 @@ import { LOGIN, ADD_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 
 
-const initialState = {
+let initialSignupState = {
   firstName: "",
   lastName: "",
   email: "",
   password: "",
   confirmPassword: "",
 };
+let initialLoginState = {
+  email: "",
+  password: "",
+};
 
 function Signup(props) {
-  const [formData, setFormData] = useState(initialState);
-  const [login, { error }] = useMutation(LOGIN);
+  const [signupData, setSignupData] = useState(initialSignupState);
+  const [loginData, setLoginData] = useState(initialLoginState);
+  const [login] = useMutation(LOGIN);
   const [addUser] = useMutation(ADD_USER);
   const [visibility, setVisibility] = useState(false);
   const [isSignup, setIsSignup] = useState(false);
@@ -25,17 +30,24 @@ function Signup(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
+    console.log(signupData, loginData);
     if (isSignup) {
-      const mutationResponse = await addUser(formData);
+      const mutationResponse = await addUser({
+        variables: {
+          email: signupData.email,
+          password: signupData.password,
+          firstName: signupData.firstName,
+          lastName: signupData.lastName,
+        },
+      });;
       const token = mutationResponse.data.addUser.token;
       Auth.login(token);
     } else {
       try {
         const mutationResponse = await login({
           variables: {
-            email: formData.email,
-            password: formData.password,
+            email: loginData.email,
+            password: loginData.password,
           },
         });
         const token = mutationResponse.data.login.token;
@@ -46,8 +58,11 @@ function Signup(props) {
     }
   };
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleSignup = (e) => {
+    setSignupData({ ...signupData, [e.target.name]: e.target.value });
+  };
+  const handleLogin = (e) => {
+    setLoginData({ ...loginData, [e.target.name]: e.target.value });
   };
 
   const switchSign = () => {
@@ -63,14 +78,14 @@ function Signup(props) {
           <>
             <Input
               placeholder="First Name"
-              handleChange={handleChange}
+              handleChange={isSignup ? handleSignup : handleLogin}
               autoFocus
               label="firstName"
               type="firstName"
             />
             <Input
               placeholder="Last Name"
-              handleChange={handleChange}
+              handleChange={isSignup ? handleSignup : handleLogin}
               label="lastName"
               type="lastName"
             />
@@ -79,13 +94,13 @@ function Signup(props) {
 
         <Input
           placeholder="Email Address"
-          handleChange={handleChange}
+          handleChange={isSignup ? handleSignup : handleLogin}
           label="email"
           type="email"
         />
         <Input
           placeholder="Password"
-          handleChange={handleChange}
+          handleChange={isSignup ? handleSignup : handleLogin}
           label="password"
           type={visibility ? "text" : "password"}
           handleVisibility={handleVisibility}
@@ -94,7 +109,7 @@ function Signup(props) {
         {isSignup && (
           <Input
             placeholder="Repeat Password"
-            handleChange={handleChange}
+            handleChange={isSignup ? handleSignup : handleLogin}
             label="confirmPassword"
             type="password"
             autocomplete="new-password"

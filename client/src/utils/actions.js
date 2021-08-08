@@ -1,0 +1,1 @@
+export const UPDATE_HAZARDS = "UPDATE_HAZARDS";
