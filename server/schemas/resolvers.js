@@ -19,8 +19,19 @@ const resolvers = {
     GetOneHazard: async (parent, { _id }) => {
       return await Hazard.findById(_id).populate('round');
     },
-    GetUser: async () => {
-      return await User.find;
+    GetUser: async (parent, args, context) => {
+      if (context.user) {
+        const user = await User.findById(context.user.id).populate({
+          path: 'orders.products',
+          populate: 'category',
+        });
+
+        user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
+
+        return user;
+      }
+
+      throw new AuthenticationError('Not logged in');
     },
   },
   Mutation: {

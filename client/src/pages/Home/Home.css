@@ -1,0 +1,14 @@
+h1 {
+  text-align: center;
+  padding: 1rem;
+  color: #fff;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 85vh;
+  background-color: black;
+}

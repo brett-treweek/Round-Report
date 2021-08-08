@@ -30,6 +30,11 @@ const typeDefs = gql`
         hazards: [Hazard]
     }
 
+    type Auth {
+        token: ID
+        user: User
+      }
+
     type Query {
         GetAllRounds: [Round]
         GetOneRound(roundNumber: Int): Round
@@ -38,6 +43,22 @@ const typeDefs = gql`
         GetUser: User 
     }
 
-`;
+    type Mutation {
+        addUser(
+            firstName: String!
+            lastName: String!
+            email: String!
+            password: String!
+          ): Auth
+          updateUser(
+            firstName: String
+            lastName: String
+            email: String
+            password: String
+          ): User
+          updateProduct(_id: ID!, quantity: Int!): Product
+          login(email: String!, password: String!): Auth
+        }
+      `;
 
 module.exports = typeDefs;

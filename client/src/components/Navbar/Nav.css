@@ -1,0 +1,42 @@
+.mobNav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: ;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 40px;
+  right: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  z-index: 50;
+}
+
+.links {
+  padding: 1rem;
+  font-size: 1rem;
+  color: #fff;
+  text-decoration: none;
+  padding-left: 15%;
+}
+
+.links:hover {
+  color: blue;
+}
+
+.selected {
+  color: red;
+}
+
+.icon {
+  position: absolute;
+  top: 11px;
+  right: 11px;
+  font-size: 1rem;
+  color: #fff;
+}

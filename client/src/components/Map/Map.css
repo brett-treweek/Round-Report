@@ -1,0 +1,8 @@
+.mapContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 65vh;
+    width: 95vw;
+    border: red 2px solid;
+}
