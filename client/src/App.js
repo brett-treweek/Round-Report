@@ -1,45 +1,29 @@
-import Home from "./pages/Home/Home"
-import RoundReport from "./pages/RoundReport/RoundReport"
-import CreateHazard from "./pages/CreateHazard/CreateHazard"
-import History from "./pages/History/History"
-import Header from "./components/Header/Header";import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Home from "./pages/Home/Home";
+import RoundReport from "./pages/RoundReport/RoundReport";
+import CreateHazard from "./pages/CreateHazard/CreateHazard";
+import History from "./pages/History/History";
+import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import SignIn from "./pages/SignIn/SignIn";
-
-
 
 function App() {
   return (
     <Router>
       <div className="App">
-        <Header/>
+        <Header />
         <div className="content">
           <Switch>
-            <Route exact path='/'>
-              <Home/>
-            </Route>
-            <Route exact path='/round-report'>
-              <RoundReport/>
-            </Route>
-            <Route exact path='/create-hazard'>
-              <CreateHazard/>
-            </Route>
-            <Route exact path='/history'>
-              <History/>
-            </Route>
-            <Route exact path='/signIn'>
-              <SignIn/>
-            </Route>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/round-report" component={RoundReport} />
+            <Route exact path="/create-hazard" component={CreateHazard} />
+            <Route exact path="/history" component={History} />
+            <Route exact path="/signIn" component={SignIn} />
           </Switch>
         </div>
-        <Footer/>
+        <Footer />
       </div>
     </Router>
-    
   );
 }
 

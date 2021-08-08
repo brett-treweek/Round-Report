@@ -3,7 +3,6 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: ;
 }
 
 .menu {
@@ -39,4 +38,10 @@
   right: 11px;
   font-size: 1rem;
   color: #fff;
+}
+
+@media (min-width: 990px){
+  .icon, .menu {
+    display: none;
+  }
 }

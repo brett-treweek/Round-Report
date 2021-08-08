@@ -1,9 +1,13 @@
-import './SignIn.css'
+import { Fragment } from "react";
+import Signup from "../../components/Form/Signup";
+import "./SignIn.css";
 
 const SignIn = () => {
-    return ( <div>
-        <h1>Sign In</h1>
-    </div> );
-}
- 
+  return (
+    <Fragment>
+      <Signup />
+    </Fragment>
+  );
+};
+
 export default SignIn;
