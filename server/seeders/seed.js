@@ -36,7 +36,6 @@ db.once("open", async () => {
       const id = rd._id;
       if (rd.roundNumber === hz.roundNumber) {
         hz.round = id;
-        console.log(haz.round);
       }
     });
   });

@@ -23,8 +23,6 @@ const resolvers = {
       if (context.user) {
         const user = await User.findById(context.user.id);
 
-        user.orders.sort((a, b) => b.createdAt - a.createdAt);
-
         return user;
       }
 
@@ -49,12 +47,15 @@ const resolvers = {
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
-
+      console.log("password:", password);
+      console.log("user:", user);
       if (!user) {
         throw new AuthenticationError('Incorrect credentials');
       }
 
       const correctPw = await user.isCorrectPassword(password);
+
+      console.log("correctPassword", correctPw);
 
       if (!correctPw) {
         throw new AuthenticationError('Incorrect credentials');

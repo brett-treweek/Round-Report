@@ -18,7 +18,7 @@ import SignIn from "./pages/SignIn/SignIn";
 
 // using http link with apollo server
 const httpLink = createHttpLink({
-  uri: "http://localhost:3001/graphql",
+  uri: "http://localhost:3001/graphql"
 });
 
 const authLink = setContext((_, { headers }) => {
