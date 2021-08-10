@@ -3,30 +3,30 @@ const { gql } = require("apollo-server-express");
 const typeDefs = gql`
   type Round {
     _id: ID
-    roundNumber: Int
+    roundNumber: Int!
     startAddress: String
     hazards: [Hazard]
   }
 
   type Hazard {
     _id: ID
-    roundNumber: Int
+    roundNumber: Int!
     round: Round
-    hazardType: String
+    hazardType: String!
     title: String
     message: String
     rating: String
     imageFile: String
-    location: String
+    location: String!
     createdAt: String
     creator: String
   }
 
   type User {
     _id: ID
-    firstName: String
-    lastName: String
-    email: String
+    firstName: String!
+    lastName: String!
+    email: String!
     hazards: [Hazard]
   }
 
@@ -37,10 +37,10 @@ const typeDefs = gql`
 
   type Query {
     GetAllRounds: [Round]
-    GetOneRound(roundNumber: Int): Round
+    GetOneRound(roundNumber: Int!): Round
     GetAllHazards: [Hazard]
     GetOneHazard(_id: ID!): Hazard
-    GetUser: User
+    GetUser(_id: ID!): User
   }
 
   type Mutation {

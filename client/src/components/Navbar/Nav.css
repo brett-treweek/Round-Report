@@ -1,47 +1,61 @@
-.mobNav {
-  position: absolute;
-  top: 0;
-  left: 0;
+.deskNav{
   width: 100%;
+  color: #fff;
+  
 }
 
-.menu {
-  display: flex;
+.mobNav .navLinks {
+  display: none;
   flex-direction: column;
   position: absolute;
-  top: 40px;
+  padding-top: 50px;
+  top: 0;
   right: 0;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.85);
+  height: 35vh;
+  background-color: rgba(0, 0, 0, 0.9);
   z-index: 50;
 }
 
-.links {
+.mobNav .links, .deskNav .links{
   padding: 1rem;
-  font-size: 1rem;
+  font-size: 30px;
   color: #fff;
   text-decoration: none;
-  padding-left: 15%;
+  padding: 1rem;
+  text-align: center;
+}
+
+.deskNav .navLinks {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 1rem;
 }
 
 .links:hover {
-  color: blue;
+  color: rgb(255, 0, 0);
 }
 
 .selected {
-  color: red;
+  color: rgb(253, 249, 0) !important;
 }
 
 .icon {
+  display: none;
   position: absolute;
-  top: 11px;
-  right: 11px;
-  font-size: 1rem;
-  color: #fff;
+  top: 2%;
+  right: 5%;
+  font-size: 1.5rem;
+  color: rgb(255, 0, 0);
+  z-index: 100;
 }
 
-@media (min-width: 990px){
-  .icon, .menu {
+@media (max-width: 700px){
+  .deskNav {
     display: none;
+  }
+  .icon, .mobNav .navLinks{
+    display: flex;
   }
 }

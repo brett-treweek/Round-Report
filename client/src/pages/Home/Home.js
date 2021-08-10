@@ -5,7 +5,6 @@ import './Home.css'
 const Home = () => {
     return ( 
         <Fragment>
-            <h1>Home</h1>
             <Map/>
         </Fragment>
      );

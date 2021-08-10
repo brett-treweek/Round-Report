@@ -10,7 +10,6 @@ import { StoreProvider } from "./utils/GobalState";
 import Home from "./pages/Home/Home";
 import RoundReport from "./pages/RoundReport/RoundReport";
 import CreateHazard from "./pages/CreateHazard/CreateHazard";
-import History from "./pages/History/History";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import SignIn from "./pages/SignIn/SignIn";
@@ -48,7 +47,6 @@ function App() {
                 <Route exact path="/" component={Home} />
                 <Route exact path="/round-report" component={RoundReport} />
                 <Route exact path="/create-hazard" component={CreateHazard} />
-                <Route exact path="/history" component={History} />
                 <Route exact path="/signIn" component={SignIn} />
               </Switch>
             </div>

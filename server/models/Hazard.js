@@ -14,6 +14,9 @@ const hazardSchema = new Schema({
     },
     hazardType: {
         type: String,
+        enum: {
+            values: ['Aggresive Dog', 'Aggresive Human', 'Aggresive Magpie', 'Blind Driveway', 'Slippery Surface', 'School', 'Intersection', 'Roadworks', 'Missing Letterbox', 'Other']
+        },
         required: true
     },
     title: {
