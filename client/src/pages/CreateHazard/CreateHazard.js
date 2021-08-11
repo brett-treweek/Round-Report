@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { ADD_HAZARD } from "../../utils/mutations";
-import { useMutation, useQuery } from "@apollo/client";
+import { useMutation } from "@apollo/client";
+import Search from '../../components/Search/Search'
+
 
 let initialHazardState = {
   roundNumber: "",
@@ -9,9 +11,10 @@ let initialHazardState = {
   message: "",
 };
 
+
 function CreateHazard() {
   const [hazardData, setHazardData] = useState(initialHazardState);
-  const [addHazard] = useMutation(ADD_HAZARD)
+  const [addHazard] = useMutation(ADD_HAZARD);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,7 +28,7 @@ function CreateHazard() {
           location: hazardData.location,
           message: hazardData.message,
         },
-      })
+      });
       console.log(data);
     } catch (error) {
       console.error(error);
@@ -35,6 +38,16 @@ function CreateHazard() {
   const handleChange = (e) => {
     setHazardData({ ...hazardData, [e.target.name]: e.target.value });
   };
+
+
+  
+
+
+
+
+
+
+
 
   return (
     <div className="createHazardContainer">
@@ -89,6 +102,7 @@ function CreateHazard() {
             autoComplete="on"
             placeholder="Enter an address"
           />
+          <Search/>
           <label className="label" htmlFor="message">
             Message
           </label>
@@ -98,8 +112,8 @@ function CreateHazard() {
             className="textArea"
             type="text"
             id="message"
-            cols="50"
-            rows="20"
+            cols="20"
+            rows="10"
             placeholder="Add Notes"
           />
 
@@ -111,5 +125,7 @@ function CreateHazard() {
     </div>
   );
 }
+
+
 
 export default CreateHazard;

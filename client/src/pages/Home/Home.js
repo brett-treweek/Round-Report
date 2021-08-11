@@ -1,10 +1,14 @@
 import { Fragment } from 'react';
 import { Link } from 'react-router-dom'
 import Map from '../../components/Map/map'
-// import CreateHazard from '../CreateHazard/CreateHazard';
+
+
+
 import './Home.css'
 
 const Home = () => {
+
+
 
     return ( 
         <Fragment>

@@ -22,11 +22,13 @@ export const QUERY_USER = gql`
   }
 `;
 
-export const QUERY_HAZARD = gql`
+export const QUERY_HAZARDS = gql`
 {
-  hazard {
+  getAllHazards {
+    hazardType
     roundNumber
     location
+    message
   }
 }
 

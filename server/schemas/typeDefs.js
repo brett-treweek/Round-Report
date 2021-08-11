@@ -11,6 +11,7 @@ const typeDefs = gql`
   type Hazard {
     _id: ID
     roundNumber: Int!
+    round: Round
     hazardType: String!
     message: String
     location: String!
@@ -30,11 +31,11 @@ const typeDefs = gql`
   }
 
   type Query {
-    GetAllRounds: [Round]
-    GetOneRound(roundNumber: Int!): Round
-    GetAllHazards: [Hazard]
-    GetOneHazard(_id: ID!): Hazard
-    GetUser(_id: ID!): User
+    getAllRounds: [Round]
+    getOneRound(roundNumber: Int!): Round
+    getAllHazards: [Hazard]
+    getOneHazard(_id: ID!): Hazard
+    getUser(_id: ID!): User
   }
 
   type Mutation {

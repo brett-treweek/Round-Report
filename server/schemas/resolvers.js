@@ -6,23 +6,23 @@ const { AuthenticationError } = require('apollo-server-express');
 const resolvers = {
   Query: {
     // get all rounds with their associated hazrards
-    GetAllRounds: async () => {
+    getAllRounds: async () => {
       return await Round.find().populate("hazards");
     },
     // get round by round number with its associated hazards
-    GetOneRound: async (parent, {roundNumber}) => {
+    getOneRound: async (parent, {roundNumber}) => {
       return await Round.findOne({roundNumber}).populate('hazards');
     },
     // get all hazards with their associated round
-    GetAllHazards: async () => {
+    getAllHazards: async () => {
       return await Hazard.find({}).populate("round");
     },
     // get hazard by id with its associated round
-    GetOneHazard: async (parent, { _id }) => {
+    getOneHazard: async (parent, { _id }) => {
       return await Hazard.findById(_id).populate('round');
     },
     // get user by id with their associated hazards
-    GetUser: async (parent, args, context) => {
+    getUser: async (parent, args, context) => {
       if (context.user) {
         // populate hazards
         const user = await User.findById(context.user.id).populate('hazards');
