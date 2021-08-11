@@ -1,10 +1,36 @@
-h1 {
-  text-align: center;
-  padding: 1rem;
-  /* color: #fff; */
-}
-
 .content {
   height: 85vh;
   /* background-color: black; */
 }
+
+.mapContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 20vh;
+}
+
+.btn{
+  font-family: "Roboto", sans-serif;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: rgb(164, 243, 16);
+  color: rgb(0, 0, 0);
+  font-size: 30px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  color: #fff;
+  background-color: red;
+}
+

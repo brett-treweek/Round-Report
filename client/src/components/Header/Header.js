@@ -1,11 +1,16 @@
 import MobNav from "../Navbar/Mobile/MobNav"
+import DeskNav from "../Navbar/Desktop/DeskNav";
 import './Header.css'
 
 const Header = () => {
     return ( 
         <div className='header'>
-            <h2>Round Report</h2>
-            <MobNav/>
+            <p className="logo">RR</p>
+            <div className="navContainer">
+                <DeskNav/>
+                <MobNav/>   
+            </div>
+            
         </div>
      );
 }

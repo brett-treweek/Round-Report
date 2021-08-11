@@ -2,73 +2,56 @@
     {
         "roundNumber": 1,
         "round": null,
-        "hazardType": "dog",
-        "title": "Mad dog",
+        "hazardType": "Aggresive Dog",
         "message": "Cerberus is loose",
-        "rating": "Red",
-        "imageFile": "",
-        "location": "41 Macleod rd Applecross 6153",
-        "createdAt": "",
-        "creator": "Hades"
+        "address": "6/79 Macleod Road, Applecross WA",
+        "lat":-32.019270,
+        "lng":115.832140
     },
     {
         "roundNumber": 2,
         "round": null,
-        "hazardType": "cat",
-        "title": "stray cat",
+        "hazardType": "Other",
         "message": "here kitty, kitty",
-        "rating": "Yellow",
-        "imageFile": "",
-        "location": "101 Tweeddale rd Applecross 6153",
-        "createdAt": "",
-        "creator": "Simba"
+        "address": "10C Nairn Rd, Applecross WA 6153",
+        "lat":-32.016210,
+        "lng":115.831600
     },
     {
         "roundNumber": 3,
         "round": null,
-        "hazardType": "blind driveway",
-        "title": "Invisible car",
+        "hazardType": "Blind Driveway",
         "message": "watch out for crazy driver",
-        "rating": "Red",
-        "imageFile": "",
-        "location": "6 Duncraig rd Applecross 6153",
-        "createdAt": "",
-        "creator": "Dean"
+        "address": "81 Lamond St, Alfred Cove WA 6154",
+        "lat":-32.035030,
+        "lng":115.814500
     },
     {
         "roundNumber": 4,
         "round": null,
-        "hazardType": "magpie",
-        "title": "The red baron is alive!",
+        "hazardType": "Aggresive Human",
         "message": "death from above",
-        "rating": "Orange",
-        "imageFile": "",
-        "location": "20 Gibson st Ardross 6153",
-        "createdAt": "",
-        "creator": "arnold"
+        "address": "8 Absolng St, Palmyra WA 6157",
+        "lat":-32.051640,
+        "lng":115.790680
     },
     {
         "roundNumber": 1,
         "round": null,
-        "hazardType": "roadworks",
-        "title": "road closed",
+        "hazardType": "Roadworks",
         "message": "avoid road",
-        "rating": "Yellow",
-        "imageFile": "",
-        "location": "908 canning hwy Applecross 6153",
-        "createdAt": "",
-        "creator": "john"
+        "address": "95 Sewell St, East Fremantle WA 6158",
+        "lat":-32.047060,
+        "lng":115.761120
     },
     {
         "roundNumber": 2,
         "round": null,
-        "hazardType": "slippery driveway",
-        "title": "dangerous driveway",
+        "hazardType": "Slippery Surface",
         "message": "slippery when wet",
-        "rating": "Orange",
-        "imageFile": "",
-        "location": "7 sleet st Applecross 6153",
-        "createdAt": "",
-        "creator": "Hades"
+        "address": "36 Lucraft Gardens, Winthrop WA 6150",
+        "lat":-32.03783,
+        "lng":115.80175
+        
     }
 ]

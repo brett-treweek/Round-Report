@@ -5,23 +5,27 @@ const { AuthenticationError } = require('apollo-server-express');
 
 const resolvers = {
   Query: {
-    GetAllRounds: async () => {
+    // get all rounds with their associated hazrards
+    getAllRounds: async () => {
       return await Round.find().populate("hazards");
     },
-    // get round by round number
-    GetOneRound: async (parent, {roundNumber}) => {
+    // get round by round number with its associated hazards
+    getOneRound: async (parent, {roundNumber}) => {
       return await Round.findOne({roundNumber}).populate('hazards');
     },
-    GetAllHazards: async () => {
+    // get all hazards with their associated round
+    getAllHazards: async () => {
       return await Hazard.find({}).populate("round");
     },
-    // get hazard by id
-    GetOneHazard: async (parent, { _id }) => {
+    // get hazard by id with its associated round
+    getOneHazard: async (parent, { _id }) => {
       return await Hazard.findById(_id).populate('round');
     },
-    GetUser: async (parent, args, context) => {
+    // get user by id with their associated hazards
+    getUser: async (parent, args, context) => {
       if (context.user) {
-        const user = await User.findById(context.user.id);
+        // populate hazards
+        const user = await User.findById(context.user.id).populate('hazards');
 
         return user;
       }
@@ -36,15 +40,15 @@ const resolvers = {
 
       return { token, user };
     },
-    updateUser: async (parent, args, context) => {
-      if (context.user) {
-        return User.findByIdAndUpdate(context.user.id, args, {
-          new: true,
-        });
-      }
+    // updateUser: async (parent, args, context) => {
+    //   if (context.user) {
+    //     return User.findByIdAndUpdate(context.user.id, args, {
+    //       new: true,
+    //     });
+    //   }
 
-      throw new AuthenticationError('Not logged in');
-    },
+    //   throw new AuthenticationError('Not logged in');
+    // },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
       console.log("password:", password);
@@ -64,6 +68,16 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
+    },
+
+    addHazard: async (parent, args) => {
+      try {
+        const hazard = await Hazard.create(args);
+        return hazard;
+      } catch (error) {
+        console.log(error);
+      }
+      
     },
   }
 };

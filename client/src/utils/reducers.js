@@ -8,7 +8,7 @@ export const reducer = (state, action) => {
     case UPDATE_HAZARDS:
       return {
         ...state,
-        hazards: [...action.products],
+        hazards: [...action.hazards],
       };
 
     default:

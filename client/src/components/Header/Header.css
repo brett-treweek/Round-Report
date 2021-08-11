@@ -1,9 +1,21 @@
 .header {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     height: 7.5vh;
     background-color: black;
+}
+
+.navContainer{
+    width: 80%;
+}
+.logo{
+    font-family: 'Cinzel', serif;
+    color: rgb(94, 255, 0);
+    padding: 2rem;
+    font-size: 30px;
+    font-weight: 400;
+    z-index: 100;
 }
 
 h2 {

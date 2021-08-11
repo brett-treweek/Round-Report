@@ -1,12 +1,26 @@
 import { Fragment } from 'react';
+import { Link } from 'react-router-dom'
 import Map from '../../components/Map/map'
+
+
+
 import './Home.css'
 
 const Home = () => {
+
+
+
     return ( 
         <Fragment>
-            <h1>Home</h1>
-            <Map/>
+            <div className="mapContainer">
+              <Map/>  
+            </div>
+            
+            <div className="buttonContainer">
+                <Link className='btn addHazard' exact='true' to='/create-hazard'>Add Hazard</Link>
+                <button className='btn viewOptions'>View Options</button>
+            </div>
+            
         </Fragment>
      );
 }

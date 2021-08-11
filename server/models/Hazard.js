@@ -1,5 +1,4 @@
 const { Schema, model } = require('mongoose');
-const Round = require('./Round');
 
 const hazardSchema = new Schema({
     roundNumber: {
@@ -14,34 +13,27 @@ const hazardSchema = new Schema({
     },
     hazardType: {
         type: String,
+        enum: {
+            values: ['Aggresive Dog', 'Aggresive Human', 'Aggresive Magpie', 'Blind Driveway', 'Slippery Surface', 'School', 'Intersection', 'Roadworks', 'Missing Letterbox', 'Other']
+        },
         required: true
-    },
-    title: {
-        type: String
     },
     message: {
         type: String
     },
-    rating: {
-        type: String,
-        enum: {
-            values: ['Yellow', 'Orange', 'Red']
-        }
-    },
-    imageFile: {
-        type: String
-    },
-    location: {
+    address: {
         type: String,
         required: true
     },
-    createdAt: {
-        type: Date,
-        default: new Date()
+    lat: {
+        type: Number,
+        required: true
     },
-    creator: {
-        type: String
-    }
+    lng: {
+        type: Number,
+        required: true
+    },
+    
 
 })
 

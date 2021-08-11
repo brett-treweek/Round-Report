@@ -21,3 +21,21 @@ export const QUERY_USER = gql`
     }
   }
 `;
+
+export const QUERY_HAZARDS = gql`
+{
+  getAllHazards {
+    _id
+    hazardType
+    roundNumber
+    round{
+      startAddress
+    }
+    address
+    message
+    lat
+    lng
+  }
+}
+
+`

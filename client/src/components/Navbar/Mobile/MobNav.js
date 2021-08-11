@@ -16,7 +16,7 @@ const Navbar = () => {
   return (
     <div className="mobNav">
       {showMenu ? closeHamburger : hamburger}
-      {showMenu && <Links closeNav={closeNav}/>}
+      {showMenu && <Links isMobile={true} closeNav={closeNav}/>}
     </div>
   );
 };

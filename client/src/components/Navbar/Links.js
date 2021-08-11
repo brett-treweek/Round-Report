@@ -3,13 +3,13 @@ import "./Nav.css";
 
 const Links = (props) => {
   return (
-    <nav className="menu">
+    <nav className="navLinks">
       <NavLink
         exact
         to="/"
         className="links"
         activeClassName="selected"
-        onClick={() => props.closeNav()}
+        onClick={() => props.isMobile && props.closeNav()}
       >
         Home
       </NavLink>
@@ -18,25 +18,16 @@ const Links = (props) => {
         to="/round-report"
         activeClassName="selected"
         className="links"
-        onClick={() => props.closeNav()}
+        onClick={() => props.isMobile && props.closeNav()}
       >
         Round Report
-      </NavLink>
-      <NavLink
-        exact
-        to="/history"
-        activeClassName="selected"
-        className="links"
-        onClick={() => props.closeNav()}
-      >
-        History
       </NavLink>
       <NavLink
         exact
         to="/signIn"
         activeClassName="selected"
         className="links"
-        onClick={() => props.closeNav()}
+        onClick={() => props.isMobile && props.closeNav()}
       >
         Sign In
       </NavLink>
