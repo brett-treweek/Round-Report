@@ -21,10 +21,19 @@ const hazardSchema = new Schema({
     message: {
         type: String
     },
-    location: {
+    address: {
         type: String,
         required: true
-    }
+    },
+    lat: {
+        type: Number,
+        required: true
+    },
+    lng: {
+        type: Number,
+        required: true
+    },
+    
 
 })
 

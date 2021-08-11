@@ -1,8 +1,7 @@
-import React, { useState } from "react";
-import { QUERY_HAZARDS } from "../../utils/queries";
-import { useQuery } from "@apollo/client";
-import { GoogleMap, useLoadScript } from "@react-google-maps/api";
+import React from "react";
 import "./Map.css";
+import Hazard from "../Hazard/hazard";
+import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 import usePlacesAutocomplete, {
   getGeocode,
   getLatLng,
@@ -11,10 +10,11 @@ import {
   Combobox,
   ComboboxInput,
   ComboboxPopover,
-  ComboboxList,
+  // ComboboxList,
   ComboboxOption,
 } from "@reach/combobox";
 import "@reach/combobox/styles.css";
+require('dotenv').config();
 
 const containerStyle = {
   width: "100%",
@@ -25,70 +25,78 @@ const center = {
   lat: -32.03784,
   lng: 115.80174,
 };
+const libs = [process.env.REACT_APP_LIBRARIES];
+const key = [process.env.REACT_APP_GOOGLE_API_KEY];
+const mapTheme = process.env.REACT_APP_MAP_ID;
 
-const key = process.env.REACT_APP_GOOGLE_API_KEY;
-const libs = ["places"];
-const mapTheme = ["5ef80f0325514b92"];
+
+
 
 function Map() {
+
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: key,
     libraries: libs,
   });
+  if (loadError) return "error loading google script"
+  if (!isLoaded) return "Loading..."
 
-  const [markers, setMarkers] = useState([]);
-  const { loading, data } = useQuery(QUERY_HAZARDS);
+  
+  // console.log("hazardData", hazardData);
+    
+    
+    
+    
+ 
 
-  console.log(data);
-  console.log(isLoaded);
-
-  if (loading)
-    return (
-      <div>
-        <h1>Loading...</h1>
-      </div>
-    );
+  
 
   return (
     <div className="map">
-      <h1>Add Hazard</h1>
       <Search/>
-        <GoogleMap
-          mapContainerStyle={containerStyle}
-          center={center}
-          zoom={13.5}
-          options={{ mapId: mapTheme }}
-        >
-          <></>
-        </GoogleMap>
+      <GoogleMap
+        mapContainerStyle={containerStyle}
+        center={center}
+        zoom={13.5}
+        options={{ mapId: mapTheme }}
+      >
+        <Marker
+            key={"123445"}
+            position={{ lat: -32.03784, lng: 115.80174 }}
+          />
+      </GoogleMap>
     </div>
   );
 }
 
-const Search = () => {
-  //   if (loadError) return 'error loading maps';
-  //   if (!isLoaded) return 'loading maps';
-
+function Search() {
   const {
     ready,
     value,
     suggestions: { status, data },
     setValue,
-    clearSuggestions,
+    // clearSuggestions,
   } = usePlacesAutocomplete({
     requestOptions: {
       location: { lat: () => -32.03784, lng: () => 115.80174 },
-      radius: 1000,
+      radius: 5000,
     },
   });
 
-  console.log(ready);
-  console.log(data);
+  console.log("autocomplete ready:",ready);
+
 
   return (
     <Combobox
-      onSelect={(address) => {
-        console.log(address);
+      onSelect={async (address) => {
+        try {
+          const results = await getGeocode({ address });
+          console.log(results);
+          const { lat, lng } = await getLatLng(results[0]);
+          console.log(lat, lng);
+        } catch (error) {
+          console.log("autocomplete error", error);
+        }
       }}
     >
       <ComboboxInput
@@ -101,12 +109,19 @@ const Search = () => {
       />
       <ComboboxPopover>
         {status === "OK" &&
-          data.map(({ id, description }) => (
-            <ComboboxOption key={id} value={description} />
+          data.map(({ place_id, description }) => (
+            <ComboboxOption key={place_id} value={description} />
           ))}
       </ComboboxPopover>
     </Combobox>
   );
-};
+}
 
 export default React.memo(Map);
+
+/* {markers.map((marker) => (
+          <Marker
+            key={marker._id}
+            position={{ lat: marker.lat, lng: marker.lng }}
+          />
+        ))} */

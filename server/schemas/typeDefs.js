@@ -14,7 +14,9 @@ const typeDefs = gql`
     round: Round
     hazardType: String!
     message: String
-    location: String!
+    address: String!
+    lat: Float!
+    lng: Float!
   }
 
   type User {
@@ -59,7 +61,9 @@ const typeDefs = gql`
       roundNumber: Int!
       hazardType: String!
       message: String
-      location: String!
+      address: String!
+      lat: Float!
+      lng: Float!
     ): Hazard
   }
 `;
