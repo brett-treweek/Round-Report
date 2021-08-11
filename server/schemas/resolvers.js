@@ -40,15 +40,15 @@ const resolvers = {
 
       return { token, user };
     },
-    updateUser: async (parent, args, context) => {
-      if (context.user) {
-        return User.findByIdAndUpdate(context.user.id, args, {
-          new: true,
-        });
-      }
+    // updateUser: async (parent, args, context) => {
+    //   if (context.user) {
+    //     return User.findByIdAndUpdate(context.user.id, args, {
+    //       new: true,
+    //     });
+    //   }
 
-      throw new AuthenticationError('Not logged in');
-    },
+    //   throw new AuthenticationError('Not logged in');
+    // },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
       console.log("password:", password);
@@ -68,6 +68,16 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
+    },
+
+    addHazard: async (parent, args) => {
+      try {
+        const hazard = await Hazard.create(args);
+        return hazard;
+      } catch (error) {
+        console.log(error);
+      }
+      
     },
   }
 };

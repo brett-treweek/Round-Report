@@ -2,73 +2,44 @@
     {
         "roundNumber": 1,
         "round": null,
-        "hazardType": "dog",
-        "title": "Mad dog",
+        "hazardType": "Aggresive Dog",
         "message": "Cerberus is loose",
-        "rating": "Red",
-        "imageFile": "",
-        "location": "41 Macleod rd Applecross 6153",
-        "createdAt": "",
-        "creator": "Hades"
+        "location": "41 Macleod rd Applecross 6153"
     },
     {
         "roundNumber": 2,
         "round": null,
-        "hazardType": "cat",
-        "title": "stray cat",
+        "hazardType": "Other",
         "message": "here kitty, kitty",
-        "rating": "Yellow",
-        "imageFile": "",
-        "location": "101 Tweeddale rd Applecross 6153",
-        "createdAt": "",
-        "creator": "Simba"
+        "location": "101 Tweeddale rd Applecross 6153"
     },
     {
         "roundNumber": 3,
         "round": null,
-        "hazardType": "blind driveway",
-        "title": "Invisible car",
+        "hazardType": "Blind Driveway",
         "message": "watch out for crazy driver",
-        "rating": "Red",
-        "imageFile": "",
-        "location": "6 Duncraig rd Applecross 6153",
-        "createdAt": "",
-        "creator": "Dean"
+        "location": "6 Duncraig rd Applecross 6153"
     },
     {
         "roundNumber": 4,
         "round": null,
-        "hazardType": "magpie",
-        "title": "The red baron is alive!",
+        "hazardType": "Aggresive Magpie",
         "message": "death from above",
-        "rating": "Orange",
-        "imageFile": "",
-        "location": "20 Gibson st Ardross 6153",
-        "createdAt": "",
-        "creator": "arnold"
+        "location": "20 Gibson st Ardross 6153"
     },
     {
         "roundNumber": 1,
         "round": null,
-        "hazardType": "roadworks",
-        "title": "road closed",
+        "hazardType": "Roadworks",
         "message": "avoid road",
-        "rating": "Yellow",
-        "imageFile": "",
-        "location": "908 canning hwy Applecross 6153",
-        "createdAt": "",
-        "creator": "john"
+        "location": "908 canning hwy Applecross 6153"
     },
     {
         "roundNumber": 2,
         "round": null,
-        "hazardType": "slippery driveway",
-        "title": "dangerous driveway",
+        "hazardType": "Slippery Surface",
         "message": "slippery when wet",
-        "rating": "Orange",
-        "imageFile": "",
-        "location": "7 sleet st Applecross 6153",
-        "createdAt": "",
-        "creator": "Hades"
+        "location": "7 sleet st Applecross 6153"
+        
     }
 ]

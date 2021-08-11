@@ -21,3 +21,13 @@ export const QUERY_USER = gql`
     }
   }
 `;
+
+export const QUERY_HAZARD = gql`
+{
+  hazard {
+    roundNumber
+    location
+  }
+}
+
+`

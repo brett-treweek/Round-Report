@@ -1,8 +1,6 @@
-.mapContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.map {
     height: 65vh;
-    width: 95vw;
-    border: red 2px solid;
+    width: 85%;
+    margin: 2rem;
+    border: rgb(0, 0, 0) 2px solid;
 }

@@ -32,3 +32,27 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const ADD_HAZARD = gql`
+  mutation addHazard(
+    $roundNumber: Int!
+    $hazardType: String!
+    $message: String
+    $location: String!
+  ) {
+    addHazard(
+      roundNumber: $roundNumber
+      hazardType: $hazardType
+      message: $message
+      location: $location
+    ){
+      _id
+      roundNumber
+      hazardType
+      message
+      location
+    }
+  }
+
+
+`

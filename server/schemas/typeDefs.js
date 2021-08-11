@@ -11,15 +11,9 @@ const typeDefs = gql`
   type Hazard {
     _id: ID
     roundNumber: Int!
-    round: Round
     hazardType: String!
-    title: String
     message: String
-    rating: String
-    imageFile: String
     location: String!
-    createdAt: String
-    creator: String
   }
 
   type User {
@@ -50,13 +44,22 @@ const typeDefs = gql`
       email: String!
       password: String!
     ): Auth
+
     updateUser(
       firstName: String
       lastName: String
       email: String
       password: String
     ): User
+
     login(email: String!, password: String!): Auth
+
+    addHazard(
+      roundNumber: Int!
+      hazardType: String!
+      message: String
+      location: String!
+    ): Hazard
   }
 `;
 

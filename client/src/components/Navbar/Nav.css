@@ -20,6 +20,7 @@
 .mobNav .links, .deskNav .links{
   padding: 1rem;
   font-size: 30px;
+  letter-spacing: 1px;
   color: #fff;
   text-decoration: none;
   padding: 1rem;
@@ -34,11 +35,11 @@
 }
 
 .links:hover {
-  color: rgb(255, 0, 0);
+  color: rgb(94, 255, 0)!important;
 }
 
 .selected {
-  color: rgb(253, 249, 0) !important;
+  color: rgb(200, 255, 169)!important;
 }
 
 .icon {
