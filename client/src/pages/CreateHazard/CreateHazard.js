@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { ADD_HAZARD } from "../../utils/mutations";
 import { useMutation } from "@apollo/client";
-import Search from '../../components/Search/Search'
 
 
 let initialHazardState = {
@@ -12,7 +11,7 @@ let initialHazardState = {
 };
 
 
-function CreateHazard() {
+function CreateHazard(props) {
   const [hazardData, setHazardData] = useState(initialHazardState);
   const [addHazard] = useMutation(ADD_HAZARD);
 
@@ -39,19 +38,9 @@ function CreateHazard() {
     setHazardData({ ...hazardData, [e.target.name]: e.target.value });
   };
 
-
-  
-
-
-
-
-
-
-
-
   return (
     <div className="createHazardContainer">
-      <h1 className="createHazardTitle">Create Hazard</h1>
+      <h1 className="createHazardTitle">Create Hazard for </h1>
       <div className="formContainer">
         <form className="form" onSubmit={handleSubmit}>
           <label className="label" htmlFor="rndNum">
@@ -90,7 +79,7 @@ function CreateHazard() {
             <option value="Other">Other</option>
           </select>
 
-          <label className="label" htmlFor="location">
+          {/* <label className="label" htmlFor="location">
             Location
           </label>
           <input
@@ -101,8 +90,7 @@ function CreateHazard() {
             id="location"
             autoComplete="on"
             placeholder="Enter an address"
-          />
-          <Search/>
+          /> */}
           <label className="label" htmlFor="message">
             Message
           </label>
