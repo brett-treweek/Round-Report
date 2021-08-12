@@ -1,7 +1,13 @@
 import { NavLink } from "react-router-dom";
 import "./Nav.css";
+import Auth from "../../utils/auth";
 
 const Links = (props) => {
+
+  const signOut = () => {
+    Auth.logout()
+  }
+
   return (
     <nav className="navLinks">
       <NavLink
@@ -22,15 +28,19 @@ const Links = (props) => {
       >
         Round Report
       </NavLink>
-      <NavLink
-        exact
-        to="/signIn"
-        activeClassName="selected"
-        className="links"
-        onClick={() => props.isMobile && props.closeNav()}
-      >
-        Sign In
-      </NavLink>
+      {Auth.loggedIn() ? (
+        <button onClick={signOut}>Sign Out</button>
+      ) : (
+        <NavLink
+          exact
+          to="/signIn"
+          activeClassName="selected"
+          className="links"
+          onClick={() => props.isMobile && props.closeNav()}
+        >
+          Sign In
+        </NavLink>
+      )}
     </nav>
   );
 };

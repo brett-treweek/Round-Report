@@ -1,0 +1,77 @@
+.createHazardContainer{
+display: flex;
+flex-direction: column;
+align-items: center;
+/* justify-content: center; */
+height: 85vh;
+}
+.createHazardTitle{
+    margin-top: 1rem;
+font-size: 40px;
+padding: 2rem;
+}
+.formContainer{
+    border: solid 2px black;
+    height: 65vh;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+}
+.label{
+    font-size: 30px;
+    padding: 1rem;
+    color: #fff;
+    text-align: center;
+    margin-top: 2rem;
+    border-radius: 10px;
+}
+.input, .select{
+    text-align: center;
+    width: 40vw;
+    max-width: 700px;
+    height: 60px;
+    font-size: 20px;
+    line-height: 20px;
+    border-radius: 10px;
+    padding: 1rem;
+    outline: none;
+    border: none;
+}
+input:focus, select:focus{
+    background-color: rgb(219, 224, 222);
+    /* color: #fff; */
+}
+.select{
+
+}
+.textArea{
+width: 40vw;
+max-width: 700px;
+font-size: 20px;
+padding: 1rem;
+border-radius: 10px;
+resize: none;
+outline: none;
+}
+.button{
+margin-top: 2rem;
+width: 400px;
+max-width: 400px;
+height: 60px;
+border-radius: 10px;
+border: none;
+background-color: rgb(43, 117, 0);
+color: #fff;
+font-size: 25px;
+transition: all 0.3s ease;
+}
+button:hover{
+    background-color: rgb(94, 255, 0);
+    color: black;
+    cursor: pointer;
+}

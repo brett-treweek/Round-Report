@@ -1,7 +1,6 @@
 import React from "react";
 import "./Map.css";
-import Hazard from "../Hazard/hazard";
-import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
+import { GoogleMap, useLoadScript, Marker, InfoWindow } from "@react-google-maps/api";
 import usePlacesAutocomplete, {
   getGeocode,
   getLatLng,
@@ -14,7 +13,8 @@ import {
   ComboboxOption,
 } from "@reach/combobox";
 import "@reach/combobox/styles.css";
-require('dotenv').config();
+require('default-passive-events');
+
 
 const containerStyle = {
   width: "100%",
@@ -29,47 +29,62 @@ const libs = [process.env.REACT_APP_LIBRARIES];
 const key = [process.env.REACT_APP_GOOGLE_API_KEY];
 const mapTheme = process.env.REACT_APP_MAP_ID;
 
-
-
-
-function Map() {
-
+function Map(props) {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: key,
     libraries: libs,
   });
-  if (loadError) return "error loading google script"
-  if (!isLoaded) return "Loading..."
+  const [selected, setSelected] = React.useState(null)
+  const mapRef = React.useRef();
+  const onMapLoad = React.useCallback((map) => {
+    mapRef.current = map;
+  }, [])
 
-  
-  // console.log("hazardData", hazardData);
-    
-    
-    
-    
- 
 
-  
+  if (loadError) return <p>"error loading google script"</p>;
+  if (!isLoaded) return <p>"Loading..."</p>;
 
   return (
     <div className="map">
-      <Search/>
+      <Search />
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
         zoom={13.5}
         options={{ mapId: mapTheme }}
+        onLoad={onMapLoad}
       >
-        <Marker
-            key={"123445"}
-            position={{ lat: -32.03784, lng: 115.80174 }}
+        {props.hazardData.map((marker) => (
+          <Marker
+            key={marker._id}
+            position={{ lat: marker.lat, lng: marker.lng }}
+            icon={{
+              url: './icons/alert.png',
+              scaledSize: new window.google.maps.Size(20, 20),
+            }}
+            onClick={() => {
+              setSelected(marker);
+              
+            }}
           />
+        ))}
+        {selected ? (<InfoWindow position={{lat: selected.lat, lng: selected.lng}} onCloseClick={()=>{
+          console.log(selected);
+          setSelected(null)
+        }}>
+          <div>
+            <h3>{selected.hazardType}</h3>
+            <p>{selected.address}</p>
+            <p>Round Number: {selected.roundNumber}</p>
+            <p>{selected.message}</p>
+          </div>
+        </InfoWindow>): null}
       </GoogleMap>
     </div>
   );
 }
 
-function Search() {
+export function Search() {
   const {
     ready,
     value,
@@ -83,8 +98,7 @@ function Search() {
     },
   });
 
-  console.log("autocomplete ready:",ready);
-
+  console.log("autocomplete ready:", ready);
 
   return (
     <Combobox
@@ -100,6 +114,7 @@ function Search() {
       }}
     >
       <ComboboxInput
+        className="searchBox"
         value={value}
         onChange={(e) => {
           setValue(e.target.value);
@@ -119,9 +134,4 @@ function Search() {
 
 export default React.memo(Map);
 
-/* {markers.map((marker) => (
-          <Marker
-            key={marker._id}
-            position={{ lat: marker.lat, lng: marker.lng }}
-          />
-        ))} */
+  

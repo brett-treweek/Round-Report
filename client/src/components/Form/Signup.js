@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import Input from "./Input";
-import { useMutation } from '@apollo/client';
-import { LOGIN, ADD_USER } from '../../utils/mutations';
-import Auth from '../../utils/auth';
+import { useMutation } from "@apollo/client";
+import { LOGIN, ADD_USER } from "../../utils/mutations";
+import Auth from "../../utils/auth";
+// import { Context } from '../../utils/GobalState'
 
 
 let initialSignupState = {
@@ -20,28 +21,38 @@ let initialLoginState = {
 function Signup(props) {
   const [signupData, setSignupData] = useState(initialSignupState);
   const [loginData, setLoginData] = useState(initialLoginState);
-  const [login] = useMutation(LOGIN);
+  const [login, {error}] = useMutation(LOGIN);
   const [addUser] = useMutation(ADD_USER);
   const [visibility, setVisibility] = useState(false);
   const [isSignup, setIsSignup] = useState(false);
+  // const [state, setState] = useContext(Context)
 
   const handleVisibility = () =>
     setVisibility((prevVisibility) => !prevVisibility);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
     console.log(signupData, loginData);
     if (isSignup) {
-      const mutationResponse = await addUser({
-        variables: {
-          email: signupData.email,
-          password: signupData.password,
-          firstName: signupData.firstName,
-          lastName: signupData.lastName,
-        },
-      });;
-      const token = mutationResponse.data.addUser.token;
-      Auth.login(token);
+      try {
+        const mutationResponse = await addUser({
+          variables: {
+            email: signupData.email,
+            password: signupData.password,
+            firstName: signupData.firstName,
+            lastName: signupData.lastName,
+          },
+        });        
+        const token = mutationResponse.data.addUser.token;
+        Auth.login(token);
+        // set state to loggedIn = 'true'
+        // setState({loggedIn: 'true'})
+        // localStorage.setItem('state', state);
+        // console.log('State:', state);
+      } catch (error) {
+        console.log("error signing up:", error);
+      }
     } else {
       try {
         const mutationResponse = await login({
@@ -50,10 +61,15 @@ function Signup(props) {
             password: loginData.password,
           },
         });
+        console.log("MutationResponse:", mutationResponse.data.login.user._id);
         const token = mutationResponse.data.login.token;
         Auth.login(token);
-      } catch (e) {
-        console.log(e);
+        // setState({loggedIn: 'true'})
+        // localStorage.setItem('state', state);
+        // console.log('State:', state);
+        // set state to loggedIn = 'true'
+      } catch (error) {
+        console.log("Login Failed:",error);
       }
     }
   };
@@ -106,6 +122,11 @@ function Signup(props) {
           handleVisibility={handleVisibility}
           autocomplete="password"
         />
+        {error ? (
+          <div>
+            <p className="error-text">The provided credentials are incorrect</p>
+          </div>
+        ) : null}
         {isSignup && (
           <Input
             placeholder="Repeat Password"
