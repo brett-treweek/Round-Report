@@ -1,6 +1,5 @@
 import React from "react";
 import "./Map.css";
-import Hazard from "../Hazard/hazard";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 import usePlacesAutocomplete, {
   getGeocode,
@@ -14,7 +13,8 @@ import {
   ComboboxOption,
 } from "@reach/combobox";
 import "@reach/combobox/styles.css";
-require('dotenv').config();
+import { QUERY_HAZARDS } from "../../utils/queries";
+import { useQuery } from "@apollo/client";
 
 const containerStyle = {
   width: "100%",
@@ -29,41 +29,33 @@ const libs = [process.env.REACT_APP_LIBRARIES];
 const key = [process.env.REACT_APP_GOOGLE_API_KEY];
 const mapTheme = process.env.REACT_APP_MAP_ID;
 
-
-
-
 function Map() {
-
+  const { data, error } = useQuery(QUERY_HAZARDS);
+  if (error) console.log("error getting hazard data", error);
+  console.log("hazard data:", data);
+  const hazardData = data.getAllHazards;
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: key,
     libraries: libs,
   });
-  if (loadError) return "error loading google script"
-  if (!isLoaded) return "Loading..."
-
-  
-  // console.log("hazardData", hazardData);
-    
-    
-    
-    
- 
-
-  
+  if (loadError) return <p>"error loading google script"</p>;
+  if (!isLoaded) return <p>"Loading..."</p>;
 
   return (
     <div className="map">
-      <Search/>
+      <Search />
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
         zoom={13.5}
         options={{ mapId: mapTheme }}
       >
-        <Marker
-            key={"123445"}
-            position={{ lat: -32.03784, lng: 115.80174 }}
+        {hazardData.map((marker) => (
+          <Marker
+            key={marker._id}
+            position={{ lat: marker.lat, lng: marker.lng }}
           />
+        ))}
       </GoogleMap>
     </div>
   );
@@ -83,8 +75,7 @@ function Search() {
     },
   });
 
-  console.log("autocomplete ready:",ready);
-
+  console.log("autocomplete ready:", ready);
 
   return (
     <Combobox
@@ -119,9 +110,4 @@ function Search() {
 
 export default React.memo(Map);
 
-/* {markers.map((marker) => (
-          <Marker
-            key={marker._id}
-            position={{ lat: marker.lat, lng: marker.lng }}
-          />
-        ))} */
+  

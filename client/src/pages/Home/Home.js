@@ -2,12 +2,9 @@ import { Fragment, useContext } from "react";
 import { Link } from "react-router-dom";
 import Map from "../../components/Map/map";
 import Auth from "../../utils/auth";
-import { Context } from "../../utils/GobalState";
-
 import "./Home.css";
 
 const Home = () => {
-  const [state, setState] = useContext(Context);
 
   return (
     <Fragment>
