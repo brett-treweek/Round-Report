@@ -29,7 +29,7 @@ const Links = (props) => {
         Round Report
       </NavLink>
       {Auth.loggedIn() ? (
-        <button onClick={signOut}>Sign Out</button>
+        <button className="links" id="signBtn" onClick={signOut}>Sign Out</button>
       ) : (
         <NavLink
           exact

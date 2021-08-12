@@ -52,6 +52,10 @@
   color: rgb(255, 0, 0);
   z-index: 100;
 }
+#signBtn{
+  background: transparent;
+  border: none;
+}
 
 @media (max-width: 700px){
   .deskNav {
