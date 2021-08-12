@@ -1,36 +1,23 @@
 .content {
   height: 85vh;
-  /* background-color: black; */
+  width: 100vw;
+}
+.homeContainer{
+  height: 100%;
+  width: 100vw;
 }
 
 .mapContainer {
+  height: 100%;
+  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
-.buttonContainer {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  height: 20vh;
-}
-
-.btn{
-  font-family: "Roboto", sans-serif;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background-color: rgb(164, 243, 16);
-  color: rgb(0, 0, 0);
+#prompt {
   font-size: 30px;
-  font-weight: 500;
-  border: none;
-  cursor: pointer;
-}
-
-.btn:hover {
+  padding: 1rem;
   color: #fff;
-  background-color: red;
 }
-

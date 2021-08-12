@@ -18,8 +18,7 @@
 }
 
 .mobNav .links, .deskNav .links{
-  padding: 1rem;
-  font-size: 30px;
+  font-size: 22px;
   letter-spacing: 1px;
   color: #fff;
   text-decoration: none;
@@ -36,11 +35,11 @@
 }
 
 .links:hover {
-  color: rgb(94, 255, 0)!important;
+  color: rgb(0, 89, 255)!important;
 }
 
 .selected {
-  color: rgb(200, 255, 169)!important;
+  color: rgb(127, 172, 255)!important;
 }
 
 .icon {
@@ -49,7 +48,7 @@
   top: 2%;
   right: 5%;
   font-size: 1.5rem;
-  color: rgb(255, 0, 0);
+  color: rgb(127, 172, 255);
   z-index: 100;
 }
 #signBtn{
