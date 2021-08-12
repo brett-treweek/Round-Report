@@ -1,9 +1,9 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import Input from "./Input";
 import { useMutation } from "@apollo/client";
 import { LOGIN, ADD_USER } from "../../utils/mutations";
 import Auth from "../../utils/auth";
-import { Context } from '../../utils/GobalState'
+// import { Context } from '../../utils/GobalState'
 
 
 let initialSignupState = {
@@ -25,7 +25,7 @@ function Signup(props) {
   const [addUser] = useMutation(ADD_USER);
   const [visibility, setVisibility] = useState(false);
   const [isSignup, setIsSignup] = useState(false);
-  const [state, setState] = useContext(Context)
+  // const [state, setState] = useContext(Context)
 
   const handleVisibility = () =>
     setVisibility((prevVisibility) => !prevVisibility);
@@ -47,9 +47,9 @@ function Signup(props) {
         const token = mutationResponse.data.addUser.token;
         Auth.login(token);
         // set state to loggedIn = 'true'
-        setState({loggedIn: 'true'})
-        localStorage.setItem('state', state);
-        console.log('State:', state);
+        // setState({loggedIn: 'true'})
+        // localStorage.setItem('state', state);
+        // console.log('State:', state);
       } catch (error) {
         console.log("error signing up:", error);
       }
@@ -64,9 +64,9 @@ function Signup(props) {
         console.log("MutationResponse:", mutationResponse.data.login.user._id);
         const token = mutationResponse.data.login.token;
         Auth.login(token);
-        setState({loggedIn: 'true'})
-        localStorage.setItem('state', state);
-        console.log('State:', state);
+        // setState({loggedIn: 'true'})
+        // localStorage.setItem('state', state);
+        // console.log('State:', state);
         // set state to loggedIn = 'true'
       } catch (error) {
         console.log("Login Failed:",error);

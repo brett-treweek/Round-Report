@@ -1,6 +1,6 @@
 import React from "react";
 import "./Map.css";
-import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
+import { GoogleMap, useLoadScript, Marker, InfoWindow } from "@react-google-maps/api";
 import usePlacesAutocomplete, {
   getGeocode,
   getLatLng,
@@ -13,8 +13,8 @@ import {
   ComboboxOption,
 } from "@reach/combobox";
 import "@reach/combobox/styles.css";
-import { QUERY_HAZARDS } from "../../utils/queries";
-import { useQuery } from "@apollo/client";
+require('default-passive-events');
+
 
 const containerStyle = {
   width: "100%",
@@ -29,15 +29,18 @@ const libs = [process.env.REACT_APP_LIBRARIES];
 const key = [process.env.REACT_APP_GOOGLE_API_KEY];
 const mapTheme = process.env.REACT_APP_MAP_ID;
 
-function Map() {
-  const { data, error } = useQuery(QUERY_HAZARDS);
-  if (error) console.log("error getting hazard data", error);
-  console.log("hazard data:", data);
-  const hazardData = data.getAllHazards;
+function Map(props) {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: key,
     libraries: libs,
   });
+  const [selected, setSelected] = React.useState(null)
+  const mapRef = React.useRef();
+  const onMapLoad = React.useCallback((map) => {
+    mapRef.current = map;
+  }, [])
+
+
   if (loadError) return <p>"error loading google script"</p>;
   if (!isLoaded) return <p>"Loading..."</p>;
 
@@ -49,19 +52,39 @@ function Map() {
         center={center}
         zoom={13.5}
         options={{ mapId: mapTheme }}
+        onLoad={onMapLoad}
       >
-        {hazardData.map((marker) => (
+        {props.hazardData.map((marker) => (
           <Marker
             key={marker._id}
             position={{ lat: marker.lat, lng: marker.lng }}
+            icon={{
+              url: './icons/alert.png',
+              scaledSize: new window.google.maps.Size(20, 20),
+            }}
+            onClick={() => {
+              setSelected(marker);
+              
+            }}
           />
         ))}
+        {selected ? (<InfoWindow position={{lat: selected.lat, lng: selected.lng}} onCloseClick={()=>{
+          console.log(selected);
+          setSelected(null)
+        }}>
+          <div>
+            <h3>{selected.hazardType}</h3>
+            <p>{selected.address}</p>
+            <p>Round Number: {selected.roundNumber}</p>
+            <p>{selected.message}</p>
+          </div>
+        </InfoWindow>): null}
       </GoogleMap>
     </div>
   );
 }
 
-function Search() {
+export function Search() {
   const {
     ready,
     value,
@@ -91,6 +114,7 @@ function Search() {
       }}
     >
       <ComboboxInput
+        className="searchBox"
         value={value}
         onChange={(e) => {
           setValue(e.target.value);
