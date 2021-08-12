@@ -1,19 +1,27 @@
-import React, { createContext, useContext } from "react";
-import { useHazardReducer } from './reducers'
+import React, { useState } from "react";
 
-const StoreContext = createContext();
-const { Provider } = StoreContext;
+const initialState = {
+  loggedIn: 'false',
+}
 
-const StoreProvider = ({ value = [], ...props }) => {
-  const [state, dispatch] = useHazardReducer({
-    hazards: []
-  });
+export const Context = React.createContext();
 
-  return <Provider value={[state, dispatch]} {...props} />;
+export function getState() {
+  return localStorage.getItem('state')
+}
+
+export function removeState() {
+  return localStorage.removeItem('state')
+}
+
+const Store = ({ children }) => {
+  const [state, setState] = useState(initialState);
+  localStorage.setItem('state', state.loggedIn)
+
+  return (
+    <Context.Provider value={[state, setState]}>{children}</Context.Provider>
+  )
+
 };
 
-const useStoreContext = () => {
-  return useContext(StoreContext);
-};
-
-export { StoreProvider, useStoreContext };
+export default Store;
