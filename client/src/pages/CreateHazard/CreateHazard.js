@@ -30,3 +30,4 @@ export default CreateHazard;
   // }
   
   // navigator.geolocation.getCurrentPosition(success, error, options);
+

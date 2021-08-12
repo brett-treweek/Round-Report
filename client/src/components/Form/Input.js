@@ -1,13 +1,18 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import './Form.css'
 
-const Input = ({type, label, placeholder, handleChange, autoFocus, handleVisibility }) => {
-
+const Input = ({
+  type,
+  label,
+  placeholder,
+  handleChange,
+  autoFocus,
+}) => {
   return (
-    <div className={label}>
-      <label htmlFor={label}>{placeholder}</label>
+    <div className="loginWrapper">
+      <label htmlFor={label} className="loginLabel">{placeholder}</label>
       <input
+        className="loginInput"
         placeholder={placeholder}
         name={label}
         type={type}
@@ -15,16 +20,7 @@ const Input = ({type, label, placeholder, handleChange, autoFocus, handleVisibil
         onChange={handleChange}
         autoFocus={autoFocus}
         autoComplete={type}
-        inputprops={
-            label === 'password' ? {
-                endAdornment: (
-                    <div>
-                    <FontAwesomeIcon onClick={handleVisibility} className='icon' icon={type === 'password' ? faEye : faEyeSlash}/>
-                    </div>
-                )
-            } : null
-        } 
-     />
+      />
     </div>
   );
 };

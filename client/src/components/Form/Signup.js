@@ -3,6 +3,8 @@ import Input from "./Input";
 import { useMutation } from "@apollo/client";
 import { LOGIN, ADD_USER } from "../../utils/mutations";
 import Auth from "../../utils/auth";
+import './Form.css'
+
 // import { Context } from '../../utils/GobalState'
 
 
@@ -23,12 +25,9 @@ function Signup(props) {
   const [loginData, setLoginData] = useState(initialLoginState);
   const [login, {error}] = useMutation(LOGIN);
   const [addUser] = useMutation(ADD_USER);
-  const [visibility, setVisibility] = useState(false);
   const [isSignup, setIsSignup] = useState(false);
   // const [state, setState] = useContext(Context)
 
-  const handleVisibility = () =>
-    setVisibility((prevVisibility) => !prevVisibility);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -83,13 +82,12 @@ function Signup(props) {
 
   const switchSign = () => {
     setIsSignup((prevIsSignup) => !prevIsSignup);
-    handleVisibility(false);
   };
 
   return (
-    <div className="formContainer">
-      <h1>{isSignup ? "Sign Up" : "Sign In"}</h1>
-      <form onSubmit={handleSubmit}>
+    <div className="loginContainer">
+      <h1 className="loginTitle">{isSignup ? "Sign Up" : "Sign In"}</h1>
+      <form onSubmit={handleSubmit} className="loginForm">
         {isSignup && (
           <>
             <Input
@@ -118,9 +116,8 @@ function Signup(props) {
           placeholder="Password"
           handleChange={isSignup ? handleSignup : handleLogin}
           label="password"
-          type={visibility ? "text" : "password"}
-          handleVisibility={handleVisibility}
-          autocomplete="password"
+          type="password"
+          autocomplete="password" 
         />
         {error ? (
           <div>
@@ -131,7 +128,7 @@ function Signup(props) {
           <Input
             placeholder="Repeat Password"
             handleChange={isSignup ? handleSignup : handleLogin}
-            label="confirmPassword"
+            label="password"
             type="password"
             autocomplete="new-password"
           />
