@@ -11,11 +11,12 @@
 }
 .logo{
     font-family: 'Cinzel', serif;
-    color: rgb(94, 255, 0);
+    color: rgb(96, 132, 251);
     padding: 2rem;
     font-size: 30px;
     font-weight: 400;
     z-index: 100;
+    margin: 0;
 }
 
 h2 {

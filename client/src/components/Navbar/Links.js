@@ -19,6 +19,20 @@ const Links = (props) => {
       >
         Home
       </NavLink>
+      {Auth.loggedIn() ? (
+        <NavLink
+        exact
+        to="/create-hazard"
+        activeClassName="selected"
+        className="links"
+        onClick={() => props.isMobile && props.closeNav()}
+      >
+        Add Hazard
+      </NavLink>
+        
+      ) : (
+        null
+      )}
       <NavLink
         exact
         to="/round-report"

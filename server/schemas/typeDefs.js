@@ -6,6 +6,7 @@ const typeDefs = gql`
     roundNumber: Int!
     startAddress: String
     hazards: [Hazard]
+    lpo: String!
   }
 
   type Hazard {
@@ -17,6 +18,7 @@ const typeDefs = gql`
     address: String!
     lat: Float!
     lng: Float!
+    user: User
   }
 
   type User {
@@ -64,6 +66,7 @@ const typeDefs = gql`
       address: String!
       lat: Float!
       lng: Float!
+      user: ID
     ): Hazard
   }
 `;

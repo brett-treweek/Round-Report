@@ -42,7 +42,9 @@ function Signup(props) {
             firstName: signupData.firstName,
             lastName: signupData.lastName,
           },
-        });        
+        }); 
+        const userDeets = mutationResponse.data.addUser.user
+        localStorage.setItem('deets', JSON.stringify(userDeets));       
         const token = mutationResponse.data.addUser.token;
         Auth.login(token);
         // set state to loggedIn = 'true'
@@ -63,10 +65,11 @@ function Signup(props) {
         console.log("MutationResponse:", mutationResponse.data.login.user._id);
         const token = mutationResponse.data.login.token;
         Auth.login(token);
-        // setState({loggedIn: 'true'})
-        // localStorage.setItem('state', state);
-        // console.log('State:', state);
-        // set state to loggedIn = 'true'
+        const userDeets = mutationResponse.data.login.user
+        localStorage.setItem('deets', JSON.stringify(userDeets));
+        // console.log("User Deets:",mutationResponse.data.login.user);
+        const bbbbb = localStorage.getItem('deets')
+        console.log('local storage deets:', JSON.parse(bbbbb));
       } catch (error) {
         console.log("Login Failed:",error);
       }
@@ -85,7 +88,7 @@ function Signup(props) {
   };
 
   return (
-    <div className="loginContainer">
+    <div className="loginContainer" style={{backgroundImage: "url(./icons/purpleCity.PNG)", backgroundPosition: "right center", backgroundSize:"cover"}}>
       <h1 className="loginTitle">{isSignup ? "Sign Up" : "Sign In"}</h1>
       <form onSubmit={handleSubmit} className="loginForm">
         {isSignup && (

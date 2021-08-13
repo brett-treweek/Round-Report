@@ -20,6 +20,7 @@ db.once("open", async () => {
   });
 
   // populating rounds with hazards
+
   rnd.forEach(async (round) => {
     haz.forEach((haz) => {
       if (round.roundNumber === haz.roundNumber) {
@@ -31,6 +32,7 @@ db.once("open", async () => {
   await Round.insertMany(rnd);
 
   // pupulating hazards with a round 
+
   haz.forEach((hz) => {
     rnd.forEach((rd) => {
       const id = rd._id;

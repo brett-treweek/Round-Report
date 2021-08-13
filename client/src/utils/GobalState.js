@@ -1,25 +1,26 @@
 import React, { useState } from "react";
 
 const initialState = {
-  loggedIn: 'false',
+  lat: 21,
+  lng: 22
 }
 
 export const Context = React.createContext();
 
-export function getState() {
-  return localStorage.getItem('state')
-}
+// export function getState() {
+//   return localStorage.getItem('state')
+// }
 
-export function removeState() {
-  return localStorage.removeItem('state')
-}
+// export function removeState() {
+//   return localStorage.removeItem('state')
+// }
 
 const Store = ({ children }) => {
-  const [state, setState] = useState(initialState);
-  localStorage.setItem('state', state.loggedIn)
+  const [coords, setCoords] = useState(initialState);
+  // localStorage.setItem('state', state.loggedIn)
 
   return (
-    <Context.Provider value={[state, setState]}>{children}</Context.Provider>
+    <Context.Provider value={[coords, setCoords]}>{children}</Context.Provider>
   )
 
 };

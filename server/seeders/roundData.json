@@ -1,22 +1,62 @@
 [
     {
         "roundNumber": 1,
-        "startAddress": "6/79 Macleod rd Applecross 6153",
-        "hazards": []
+        "startAddress": "16 Moreau Mews, Applecross WA 6153",
+        "hazards": [],
+        "lpo": "Applecross Village Newsagency, shop 1/35 Ardross St, Applecross WA 6153"
     },
     {
         "roundNumber": 2,
-        "startAddress": "63 Dunkley rd Applecross 6153",
-        "hazards": []
+        "startAddress": "6 David St, Mount Pleasant WA 6153",
+        "hazards": [],
+        "lpo": "902 Canning Hwy, Applecross WA 6153"
     },
     {
         "roundNumber": 3,
-        "startAddress": "20 Bombard st Ardross 6153",
-        "hazards": []
+        "startAddress": "4 Davenport Rd, Booragoon WA 6154",
+        "hazards": [],
+        "lpo": "10/67 McCoy St, Myaree WA 6154"
     },
     {
         "roundNumber": 4,
-        "startAddress": "12 Moreau Mews Applecross 6153",
-        "hazards": []
+        "startAddress": "3 Davy St, Alfred Cove WA 6154",
+        "hazards": [],
+        "lpo": "shop 3/67 N Lake Rd, Myaree WA 6154"
+    },
+    {
+        "roundNumber": 5,
+        "startAddress": "57 Redwood Cres, Melville WA 6156",
+        "hazards": [],
+        "lpo": "Shop 1/68 Leach Hwy, Melville WA 6156"
+    },
+    {
+        "roundNumber": 6,
+        "startAddress": "273 Preston Point Rd, Bicton WA 6157",
+        "hazards": [],
+        "lpo": "Melville Plaza Shopping Centre, shop 2/380 Canning Hwy, Bicton WA 6157"
+    },
+    {
+        "roundNumber": 7,
+        "startAddress": "50 Windsor Rd, East Fremantle WA 6158",
+        "hazards": [],
+        "lpo": "Stammers Shopping Centre, shop 6/265-277 Canning Hwy, Palmyra WA 6157"
+    },
+    {
+        "roundNumber": 8,
+        "startAddress": "190 Marmion St, Palmyra WA 6157",
+        "hazards": [],
+        "lpo": "Stammers Shopping Centre, shop 6/265-277 Canning Hwy, Palmyra WA 6157"
+    },
+    {
+        "roundNumber": 9,
+        "startAddress": "1 The Terrace, Fremantle WA 6160",
+        "hazards": [],
+        "lpo": "1/13 Market St, Fremantle WA 6160"
+    },
+    {
+        "roundNumber": 10,
+        "startAddress": "15 Robbins Pl, Winthrop WA 6150",
+        "hazards": [],
+        "lpo": "Winthrop Shopping Centre, shop 8/109-141 Somerville Blvd, Winthrop WA 6150"
     }
 ]

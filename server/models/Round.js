@@ -15,7 +15,11 @@ hazards: [
         type: Schema.Types.ObjectId,
         ref: 'Hazard'
     }
-]
+],
+lpo: {
+    type: String,
+    required: false
+}
 })
 
 const Round = model('Round', roundSchema)
