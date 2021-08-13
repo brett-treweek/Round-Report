@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useContext} from "react";
+import { Context } from "../../utils/GobalState"
 import usePlacesAutocomplete, {
     getGeocode,
     getLatLng,
@@ -14,12 +15,13 @@ import usePlacesAutocomplete, {
   require('default-passive-events');
 
 function Search() {
+    
     const {
       ready,
       value,
       suggestions: { status, data },
       setValue,
-      // clearSuggestions,
+      clearSuggestions,
     } = usePlacesAutocomplete({
       requestOptions: {
         location: { lat: () => -32.03784, lng: () => 115.80174 },
@@ -27,19 +29,30 @@ function Search() {
       },
     });
   
-    console.log("autocomplete ready:", ready);
-  
+    // console.log("autocomplete ready:", ready);
+    const [ coords, setCoords] = useContext(Context);
     return (
       <Combobox
         onSelect={async (address) => {
+          setValue(address, false)
+          clearSuggestions()
           try {
             const results = await getGeocode({ address });
             console.log(results);
+            const location = results[0].formatted_address;
             const { lat, lng } = await getLatLng(results[0]);
             console.log(lat, lng);
+            const data = {
+              lat: lat,
+              lng: lng,
+              address: location
+            }
+            setCoords(data)
+            
           } catch (error) {
             console.log("autocomplete error", error);
           }
+          // console.log(coords);
         }}
       >
         <ComboboxInput

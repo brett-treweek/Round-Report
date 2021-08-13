@@ -85,7 +85,7 @@ function Signup(props) {
   };
 
   return (
-    <div className="loginContainer">
+    <div className="loginContainer" style={{backgroundImage: "url(./icons/purpleCity.PNG)", backgroundPosition: "right center", backgroundSize:"cover"}}>
       <h1 className="loginTitle">{isSignup ? "Sign Up" : "Sign In"}</h1>
       <form onSubmit={handleSubmit} className="loginForm">
         {isSignup && (

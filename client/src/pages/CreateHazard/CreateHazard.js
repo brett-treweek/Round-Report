@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { Context } from "../../utils/GobalState";
 import { ADD_HAZARD } from "../../utils/mutations";
 import { useMutation } from "@apollo/client";
-import './CreateHazard.css'
+import "./CreateHazard.css";
 import Search from "../../components/Search/Search";
 import { useLoadScript } from "@react-google-maps/api";
-require('default-passive-events');
+require("default-passive-events");
 
 let initialHazardState = {
   roundNumber: "",
@@ -15,19 +16,20 @@ let initialHazardState = {
 const libs = [process.env.REACT_APP_LIBRARIES];
 const key = [process.env.REACT_APP_GOOGLE_API_KEY];
 
-
 function CreateHazard(props) {
+  const [coords, setCoords] = useContext(Context);
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: key,
     libraries: libs,
   });
-  
 
+  console.log("coords data:", coords);
   const [hazardData, setHazardData] = useState(initialHazardState);
   const [addHazard] = useMutation(ADD_HAZARD);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     console.log("hazard form data:", hazardData);
 
     try {
@@ -35,7 +37,9 @@ function CreateHazard(props) {
         variables: {
           roundNumber: parseInt(hazardData.roundNumber),
           hazardType: hazardData.hazardType,
-          location: hazardData.location,
+          address: coords.address,
+          lat: coords.lat,
+          lng: coords.lng,
           message: hazardData.message,
         },
       });
@@ -52,13 +56,18 @@ function CreateHazard(props) {
   if (!isLoaded) return <p>"Loading..."</p>;
 
   return (
-    <div className="createHazardContainer" style={{backgroundImage: "url(./icons/blueNightCity.PNG)", backgroundPosition: "center", backgroundSize:"cover"}}>
-      
-      {/* <h1 className="createHazardTitle">Create Hazard </h1> */}
+    <div
+      className="createHazardContainer"
+      style={{
+        backgroundImage: "url(./icons/blueNightCity.PNG)",
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+      }}
+    >
       <div className="formContainer">
         <form className="form" onSubmit={handleSubmit}>
-          <p className="label">Enter Address</p>
-          <Search/>
+          <p className="label">Enter Address of Hazard</p>
+          <Search />
           <label className="label" htmlFor="rndNum">
             Round Number
           </label>
@@ -94,7 +103,7 @@ function CreateHazard(props) {
             <option value="Aggresive Human">Aggresive Human</option>
             <option value="Other">Other</option>
           </select>
-          
+
           <label className="label" htmlFor="message">
             Message
           </label>
@@ -117,8 +126,5 @@ function CreateHazard(props) {
     </div>
   );
 }
- 
+
 export default CreateHazard;
-
-
-

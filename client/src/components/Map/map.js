@@ -1,7 +1,7 @@
 import React from "react";
 import "./Map.css";
 import { GoogleMap, useLoadScript, Marker, InfoWindow } from "@react-google-maps/api";
-import Theme from '../Theme'
+import theme from '../Theme'
 require('default-passive-events');
 
 
@@ -16,7 +16,7 @@ const center = {
 };
 const libs = [process.env.REACT_APP_LIBRARIES];
 const key = [process.env.REACT_APP_GOOGLE_API_KEY];
-const mapTheme = Theme;
+const mapTheme = theme;
 
 function Map(props) {
   const { isLoaded, loadError } = useLoadScript({

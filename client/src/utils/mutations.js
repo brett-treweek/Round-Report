@@ -38,19 +38,25 @@ export const ADD_HAZARD = gql`
     $roundNumber: Int!
     $hazardType: String!
     $message: String
-    $location: String!
+    $address: String!
+    $lat: Float!
+    $lng: Float!
   ) {
     addHazard(
       roundNumber: $roundNumber
       hazardType: $hazardType
       message: $message
-      location: $location
+      address: $address
+      lat: $lat
+      lng: $lng
     ){
       _id
       roundNumber
       hazardType
       message
-      location
+      address
+      lat
+      lng
     }
   }
 
