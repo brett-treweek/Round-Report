@@ -5,9 +5,9 @@
     "main": "server/server.js",
     "scripts": {
         "start": "cd server && npm start",
-        "heroku-postbuild": "npm install-client",
+        "heroku-postbuild": "npm run install-client && npm run build ",
         "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
-        "install-client": "cd client && npm install && npm run build",
+        "install-client": "cd client && npm install",
         "seed": "cd server && npm run seed",
         "build": "cd client && npm run build"
     },
