@@ -31,7 +31,9 @@ function CreateHazard(props) {
     e.preventDefault();
 
     console.log("hazard form data:", hazardData);
-
+    const data = localStorage.getItem('deets')
+    const userDeets = JSON.parse(data)
+    console.log("createHazard userdeets",userDeets);
     try {
       const { data } = await addHazard({
         variables: {
@@ -41,6 +43,7 @@ function CreateHazard(props) {
           lat: coords.lat,
           lng: coords.lng,
           message: hazardData.message,
+          user: userDeets._id,
         },
       });
       console.log(data);

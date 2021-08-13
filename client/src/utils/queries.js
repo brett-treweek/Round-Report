@@ -4,22 +4,28 @@ import { gql } from '@apollo/client';
 export const QUERY_USER = gql`
   {
     user {
+      _id
       firstName
       lastName
-      orders {
-        _id
-        purchaseDate
-        products {
-          _id
-          name
-          description
-          price
-          quantity
-          image
-        }
-      }
+      email
     }
   }
+`;
+export const QUERY_ROUND = gql`
+  {
+    getOneRound {
+    _id
+    roundNumber
+    startAddress
+    lpo
+    hazards{
+      _id
+      hazardType
+      address
+      message
+    }
+  }
+}
 `;
 
 export const QUERY_HAZARDS = gql`
@@ -30,11 +36,15 @@ export const QUERY_HAZARDS = gql`
     roundNumber
     round{
       startAddress
+      lpo
     }
     address
     message
     lat
     lng
+    user{
+      _id
+    }
   }
 }
 

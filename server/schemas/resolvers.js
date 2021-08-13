@@ -1,7 +1,6 @@
 const { Round, User, Hazard } = require("../models");
-const { signToken } = require('../utils/auth');
-const { AuthenticationError } = require('apollo-server-express');
-
+const { signToken } = require("../utils/auth");
+const { AuthenticationError } = require("apollo-server-express");
 
 const resolvers = {
   Query: {
@@ -10,8 +9,8 @@ const resolvers = {
       return await Round.find().populate("hazards");
     },
     // get round by round number with its associated hazards
-    getOneRound: async (parent, {roundNumber}) => {
-      return await Round.findOne({roundNumber}).populate('hazards');
+    getOneRound: async (parent, { roundNumber }) => {
+      return await Round.findOne({ roundNumber }).populate("hazards");
     },
     // get all hazards with their associated round
     getAllHazards: async () => {
@@ -19,18 +18,18 @@ const resolvers = {
     },
     // get hazard by id with its associated round
     getOneHazard: async (parent, { _id }) => {
-      return await Hazard.findById(_id).populate('round');
+      return await Hazard.findById(_id).populate("round");
     },
     // get user by id with their associated hazards
     getUser: async (parent, args, context) => {
       if (context.user) {
         // populate hazards
-        const user = await User.findById(context.user.id).populate('hazards');
+        const user = await User.findById(context.user.id).populate("hazards");
 
         return user;
       }
 
-      throw new AuthenticationError('Not logged in');
+      throw new AuthenticationError("Not logged in");
     },
   },
   Mutation: {
@@ -54,7 +53,7 @@ const resolvers = {
       console.log("password:", password);
       console.log("user:", user);
       if (!user) {
-        throw new AuthenticationError('Incorrect credentials');
+        throw new AuthenticationError("Incorrect credentials");
       }
 
       const correctPw = await user.isCorrectPassword(password);
@@ -62,7 +61,7 @@ const resolvers = {
       console.log("correctPassword", correctPw);
 
       if (!correctPw) {
-        throw new AuthenticationError('Incorrect credentials');
+        throw new AuthenticationError("Incorrect credentials");
       }
 
       const token = signToken(user);
@@ -72,14 +71,20 @@ const resolvers = {
 
     addHazard: async (parent, args) => {
       try {
+        console.log(args);
+        const roundNumber = args.roundNumber;
+        const data = await Round.findOneAndUpdate(
+          { roundNumber },
+          { $push: { hazards: args.user } }
+        );
+        args.round = data._id;
         const hazard = await Hazard.create(args);
         return hazard;
       } catch (error) {
         console.log(error);
       }
-      
     },
-  }
+  },
 };
 
 module.exports = resolvers;

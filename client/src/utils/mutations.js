@@ -5,6 +5,9 @@ export const LOGIN = gql`
     login(email: $email, password: $password) {
       token
       user {
+        firstName
+        lastName
+        email
         _id
       }
     }
@@ -27,6 +30,9 @@ export const ADD_USER = gql`
     ) {
       token
       user {
+        firstName
+        lastName
+        email
         _id
       }
     }
@@ -41,6 +47,7 @@ export const ADD_HAZARD = gql`
     $address: String!
     $lat: Float!
     $lng: Float!
+    $user: ID!
   ) {
     addHazard(
       roundNumber: $roundNumber
@@ -49,6 +56,7 @@ export const ADD_HAZARD = gql`
       address: $address
       lat: $lat
       lng: $lng
+      user: $user
     ){
       _id
       roundNumber
@@ -57,8 +65,11 @@ export const ADD_HAZARD = gql`
       address
       lat
       lng
+      user{
+        _id
+      }
     }
   }
 
 
-`
+`;
