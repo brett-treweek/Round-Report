@@ -2,7 +2,7 @@
   "name": "server",
   "version": "1.0.0",
   "description": "Round_Reporter",
-  "main": "index.js",
+  "main": "sevrer.js",
   "scripts": {
     "start": "node server.js",
     "watch": "nodemon server.js",
