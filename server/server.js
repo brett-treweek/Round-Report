@@ -4,6 +4,7 @@ const logger = require('morgan')
 const { typeDefs, resolvers } = require('./schemas') 
 const db = require('./config/connection'); 
 const { authMiddleware } = require('./utils/auth');
+const path = require('path');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -19,7 +20,9 @@ const server = new ApolloServer({
   app.use(express.json());
   app.use(logger('dev'));
   
-  
+  if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '../client/build')));
+  } 
 
 
 db.once('open', () => {
