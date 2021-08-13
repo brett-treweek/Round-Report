@@ -7,7 +7,7 @@ import {
   InfoWindow,
 } from "@react-google-maps/api";
 import theme from "../Theme";
-require("default-passive-events");
+// require("default-passive-events");
 
 const containerStyle = {
   width: "100%",

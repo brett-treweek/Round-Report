@@ -12,7 +12,7 @@ import usePlacesAutocomplete, {
     ComboboxOption,
   } from "@reach/combobox";
   import "@reach/combobox/styles.css";
-  require('default-passive-events');
+  // require('default-passive-events');
 
 function Search() {
     

@@ -5,7 +5,7 @@ import { useMutation } from "@apollo/client";
 import "./CreateHazard.css";
 import Search from "../../components/Search/Search";
 import { useLoadScript } from "@react-google-maps/api";
-require("default-passive-events");
+// require("default-passive-events");
 
 let initialHazardState = {
   roundNumber: "",
