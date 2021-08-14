@@ -47,10 +47,7 @@ function Signup(props) {
         localStorage.setItem('deets', JSON.stringify(userDeets));       
         const token = mutationResponse.data.addUser.token;
         Auth.login(token);
-        // set state to loggedIn = 'true'
-        // setState({loggedIn: 'true'})
-        // localStorage.setItem('state', state);
-        // console.log('State:', state);
+
       } catch (error) {
         console.log("error signing up:", error);
       }

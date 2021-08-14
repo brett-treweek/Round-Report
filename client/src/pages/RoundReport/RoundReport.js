@@ -1,9 +1,22 @@
-import './RoundReport.css'
+import "./RoundReport.css";
+import RoundSearch from "../../components/RoundSearch/RoundSearch";
 
 const RoundReport = () => {
-    return ( <div className="roundContainer" style={{backgroundImage: "url(./icons/redCity.PNG)", backgroundPosition: "right center", backgroundSize:"cover"}}>
-        <h1>Round Report</h1>
-    </div> );
-}
- 
+  
+
+  return (
+    <div
+      className="roundContainer"
+      style={{
+        backgroundImage: "url(./icons/redCity.PNG)",
+        backgroundPosition: "right center",
+        backgroundSize: "cover",
+      }}
+    >
+      <RoundSearch/>
+      
+    </div>
+  );
+};
+
 export default RoundReport;

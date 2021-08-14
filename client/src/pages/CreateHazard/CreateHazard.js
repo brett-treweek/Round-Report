@@ -63,7 +63,7 @@ function CreateHazard(props) {
       className="createHazardContainer"
       style={{
         backgroundImage: "url(./icons/blueNightCity.PNG)",
-        backgroundPosition: "center",
+        backgroundPosition: "right center",
         backgroundSize: "cover",
       }}
     >
@@ -81,7 +81,7 @@ function CreateHazard(props) {
             type="number"
             id="rndNum"
             min="1"
-            max="100"
+            max="10"
             placeholder="Please enter the Round Number "
           />
 

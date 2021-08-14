@@ -5,7 +5,7 @@ import "./Footer.css";
 const Footer = () => {
   return (
     <div className="footer">
-      <p className="label">Created by BT</p>
+      <p className="footerP">Created by BT</p>
       {/* <a
         href="https://github.com/brett-treweek"
         target="_blank"

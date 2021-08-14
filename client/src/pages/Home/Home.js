@@ -16,10 +16,10 @@ const Home = () => {
   console.log("hazard data:", hazardData);
 
   return (
-    <div className="homeContainer" style={{backgroundImage: "url(./icons/blueAus.PNG)", backgroundPosition: "center", backgroundSize:"cover"}}>
+    <div className="homeContainer">
       <div className="mapContainer">
         <Map hazardData={hazardData} />
-      {Auth.loggedIn() ? <div></div>: <p id="prompt">Please log in to add hazards</p>}
+      {Auth.loggedIn() ? <div></div>: <p id="prompt">Sign in to add hazards</p>}
       </div>
     </div>
   );

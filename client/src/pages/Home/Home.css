@@ -5,6 +5,7 @@
 .homeContainer{
   height: 100%;
   width: 100vw;
+  background-color: rgb(32, 53, 73);
 }
 
 .mapContainer {

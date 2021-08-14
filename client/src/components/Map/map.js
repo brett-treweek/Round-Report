@@ -6,7 +6,7 @@ import {
   Marker,
   InfoWindow,
 } from "@react-google-maps/api";
-import theme from "../Theme";
+import Theme from "../Theme";
 // require("default-passive-events");
 
 const containerStyle = {
@@ -20,7 +20,7 @@ const center = {
 };
 const libs = [process.env.REACT_APP_LIBRARIES];
 const key = [process.env.REACT_APP_GOOGLE_API_KEY];
-const mapTheme = theme;
+const mapTheme = Theme;
 
 function Map(props) {
   const { isLoaded, loadError } = useLoadScript({
@@ -41,7 +41,7 @@ function Map(props) {
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
-        zoom={13.5}
+        zoom={13}
         options={{ styles: mapTheme }}
         onLoad={onMapLoad}
       >

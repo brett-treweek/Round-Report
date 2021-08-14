@@ -1,4 +1,12 @@
 .roundContainer{
     height: 85vh;
     width: 100vw;
+    display: flex;
+    flex-direction: column;
+}
+.rrH1{
+    color: #fff;
+    font-weight:300;
+    text-align: center;
+    padding: 1rem;
 }

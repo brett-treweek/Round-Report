@@ -1,0 +1,29 @@
+.reportContainer{
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+}
+.searchContainer{
+    flex-direction: column;
+}
+
+.searchForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.report{
+flex-direction: column;
+/* align-items: center; */
+}
+.reportTitle{
+    font-size: 35px;
+}
+.reportP{
+    color: #fff;
+    font-size: 24px;
+}
+.roundMapContainer{
+    width: 70vw;
+    height: 40vh;
+}

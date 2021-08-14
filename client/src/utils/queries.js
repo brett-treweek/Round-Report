@@ -1,5 +1,4 @@
-import { gql } from '@apollo/client';
-
+import { gql } from "@apollo/client";
 
 export const QUERY_USER = gql`
   {
@@ -12,40 +11,44 @@ export const QUERY_USER = gql`
   }
 `;
 export const QUERY_ROUND = gql`
-  {
-    getOneRound {
-    _id
-    roundNumber
-    startAddress
-    lpo
-    hazards{
+  query getOneRound($roundNumber: Int!) {
+    getOneRound(roundNumber: $roundNumber) {
       _id
-      hazardType
-      address
-      message
+      roundNumber
+      startAddress
+      lpo
+      hazards {
+        _id
+        hazardType
+        address
+        message
+        lat
+        lng
+        user {
+          _id
+        }
+      }
     }
   }
-}
 `;
 
 export const QUERY_HAZARDS = gql`
-{
-  getAllHazards {
-    _id
-    hazardType
-    roundNumber
-    round{
-      startAddress
-      lpo
-    }
-    address
-    message
-    lat
-    lng
-    user{
+  {
+    getAllHazards {
       _id
+      hazardType
+      roundNumber
+      round {
+        startAddress
+        lpo
+      }
+      address
+      message
+      lat
+      lng
+      user {
+        _id
+      }
     }
   }
-}
-
-`
+`;

@@ -69,7 +69,8 @@ const resolvers = {
       return { token, user };
     },
 
-    addHazard: async (parent, args) => {
+    addHazard: async (parent, args, context) => {
+      console.log(context.user);
       try {
         console.log(args);
         const roundNumber = args.roundNumber;
@@ -77,8 +78,16 @@ const resolvers = {
           { roundNumber },
           { $push: { hazards: args.user } }
         );
+         // use context not local storage
+
         args.round = data._id;
         const hazard = await Hazard.create(args);
+        
+        const userID = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $push: { hazards: hazard._id } }
+        );
+
         return hazard;
       } catch (error) {
         console.log(error);
