@@ -6,11 +6,13 @@ const resolvers = {
   Query: {
     // get all rounds with their associated hazrards
     getAllRounds: async () => {
-      return await Round.find().populate("hazards");
+      return await Round.find().populate("hazard");
     },
     // get round by round number with its associated hazards
     getOneRound: async (parent, { roundNumber }) => {
-      return await Round.findOne({ roundNumber }).populate("hazards");
+      return await Round.findOne({ roundNumber }).populate({
+        path: "hazards",
+      });
     },
     // get all hazards with their associated round
     getAllHazards: async () => {
@@ -73,18 +75,17 @@ const resolvers = {
       console.log(context.user);
       try {
         console.log(args);
+        // use context not local storage
         const roundNumber = args.roundNumber;
-        const data = await Round.findOneAndUpdate(
-          { roundNumber },
-          { $push: { hazards: args.user } }
-        );
-         // use context not local storage
-
-        args.round = data._id;
         const hazard = await Hazard.create(args);
-        
+
         const userID = await User.findOneAndUpdate(
           { _id: context.user._id },
+          { $push: { hazards: hazard._id } }
+        );
+
+        const data = await Round.findOneAndUpdate(
+          { roundNumber },
           { $push: { hazards: hazard._id } }
         );
 

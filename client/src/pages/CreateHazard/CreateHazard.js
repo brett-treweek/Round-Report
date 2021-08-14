@@ -46,8 +46,10 @@ function CreateHazard(props) {
           user: userDeets._id,
         },
       });
+      window.location.assign('/');
       console.log(data);
     } catch (error) {
+      window.location.assign('/');
       console.error(error);
     }
   };

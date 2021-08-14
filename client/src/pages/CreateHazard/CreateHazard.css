@@ -24,7 +24,7 @@
     padding: 2rem;
   }
   .label{
-    font-size: 30px;
+    font-size: 25px;
     padding: 1rem;
     color: #fff;
     text-align: center;
@@ -37,7 +37,7 @@
     width: 40vw;
     max-width: 700px;
     height: 60px;
-    font-size: 20px;
+    font-size: 16px;
     line-height: 20px;
     border-radius: 10px;
     padding: 1rem;
@@ -54,7 +54,7 @@
   .textArea {
     width: 40vw;
     max-width: 700px;
-    font-size: 20px;
+    font-size: 16px;
     padding: 1rem;
     border-radius: 10px;
     resize: none;
@@ -82,7 +82,7 @@
     width: 40vw;
     max-width: 700px;
     height: 5vh;
-    font-size: 30px;
+    font-size: 16px;
     text-align: center;
     border: 3px solid black;
     border-radius: 10px;

@@ -23,7 +23,7 @@ const RoundSearch = () => {
     <div className="reportContainer">
       <div className="searchContainer">
         <form className="searchForm">
-          <label htmlFor="roundNumber" className="label">
+        <label htmlFor="roundNumber" className="label" id="searchLabel">
             Enter a round number
           </label>
           <input
@@ -31,11 +31,12 @@ const RoundSearch = () => {
             onChange={handleChange}
             type="number"
             className="input"
+            id="searchInput"
             min="1"
             max="10"
-            placeholder="Please enter the Round Number"
+            placeholder="Round Number"
           />
-          <button className="button" onClick={handleOnClick}>
+          <button className="button" id="searchBtn" onClick={handleOnClick}>
             submit
           </button>
         </form>
@@ -46,4 +47,4 @@ const RoundSearch = () => {
 };
 
 export default RoundSearch;
-// hazardData={hazardData}
+

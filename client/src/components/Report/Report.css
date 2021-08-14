@@ -1,0 +1,32 @@
+.report{
+    flex-direction: column;
+    border: 2px solid black;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 2rem;
+    /* align-items: center; */
+    }
+    .reportTitle{
+        font-size: 35px;
+        font-weight: 300;
+        padding: 1rem;
+    }
+    .reportH2{
+        font-size: 25px;
+        font-weight: 300;
+        padding: 1rem;
+    }
+    .reportP{
+        color: #fff;
+        font-size: 1rem;
+        font-weight: 300;
+    }
+    .roundMapContainer{
+        width: 70vw;
+        height: 40vh;
+    }
+    .hazardCards{
+        
+    }
+    .hazardCard{
+        font-size: 1rem;
+    }

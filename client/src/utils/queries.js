@@ -17,8 +17,9 @@ export const QUERY_ROUND = gql`
       roundNumber
       startAddress
       lpo
-      hazards {
+      hazards{
         _id
+        roundNumber
         hazardType
         address
         message
