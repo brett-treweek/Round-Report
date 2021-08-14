@@ -13,7 +13,7 @@
   }
   .formContainer {
     height: 65vh;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.7);
   }
   .form {
     display: flex;
@@ -67,7 +67,7 @@
     height: 60px;
     border-radius: 10px;
     border: none;
-    background-color: rgb(43, 117, 0);
+    background-color: rgb(71, 165, 17);
     color: #fff;
     font-size: 25px;
     transition: all 0.3s ease;

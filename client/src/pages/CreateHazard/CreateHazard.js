@@ -64,7 +64,7 @@ function CreateHazard(props) {
     <div
       className="createHazardContainer"
       style={{
-        backgroundImage: "url(./icons/blueNightCity.PNG)",
+        backgroundImage: "url(./icons/blue.PNG)",
         backgroundPosition: "right center",
         backgroundSize: "cover",
       }}

@@ -18,6 +18,14 @@ hazards: [
 lpo: {
     type: String,
     required: false
+},
+lat: {
+    type: Number,
+    required: true
+},
+lng:{
+    type: Number,
+    required: true
 }
 })
 

@@ -17,6 +17,8 @@ export const QUERY_ROUND = gql`
       roundNumber
       startAddress
       lpo
+      lat
+      lng
       hazards{
         _id
         roundNumber

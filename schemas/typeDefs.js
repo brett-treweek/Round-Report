@@ -7,6 +7,8 @@ const typeDefs = gql`
     startAddress: String
     hazards: [Hazard]
     lpo: String!
+    lat: Float!
+    lng: Float!
   }
 
   type Hazard {
@@ -49,13 +51,6 @@ const typeDefs = gql`
       email: String!
       password: String!
     ): Auth
-
-    updateUser(
-      firstName: String
-      lastName: String
-      email: String
-      password: String
-    ): User
 
     login(email: String!, password: String!): Auth
 

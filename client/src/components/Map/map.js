@@ -7,6 +7,7 @@ import {
   InfoWindow,
 } from "@react-google-maps/api";
 import Theme from "../Theme";
+import icons from '../../utils/icons'
 // require("default-passive-events");
 
 const containerStyle = {
@@ -14,10 +15,10 @@ const containerStyle = {
   height: "100%",
 };
 
-const center = {
-  lat: -32.03784,
-  lng: 115.80174,
-};
+// const center = {
+//   lat: -32.03784,
+//   lng: 115.80174,
+// };
 const libs = [process.env.REACT_APP_LIBRARIES];
 const key = [process.env.REACT_APP_GOOGLE_API_KEY];
 const mapTheme = Theme;
@@ -28,11 +29,7 @@ function Map(props) {
     libraries: libs,
   });
   const [selected, setSelected] = React.useState(null);
-  const mapRef = React.useRef();
-  const onMapLoad = React.useCallback((map) => {
-    mapRef.current = map;
-  }, []);
-
+  
   if (loadError) return <p>"error loading google script"</p>;
   if (!isLoaded) return <p>"Loading..."</p>;
 
@@ -40,10 +37,10 @@ function Map(props) {
     <div className="map">
       <GoogleMap
         mapContainerStyle={containerStyle}
-        center={center}
-        zoom={13}
+        center={props.center}
+        zoom={props.zoom}
         options={{ styles: mapTheme }}
-        onLoad={onMapLoad}
+
       >
         {props &&
           props.hazardData.map((marker) => (
@@ -51,7 +48,7 @@ function Map(props) {
               key={marker._id}
               position={{ lat: marker.lat, lng: marker.lng }}
               icon={{
-                url: "./icons/dog.png",
+                url: './icons/alert.png',
                 scaledSize: new window.google.maps.Size(25, 25),
               }}
               onClick={() => {

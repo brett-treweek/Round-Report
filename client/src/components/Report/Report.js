@@ -20,28 +20,32 @@ const Report = (props) => {
   if (error) return <p>error fetching round data {error}</p>;
 
   const roundData = data.getOneRound;
-  console.log('RRRRRR', roundData);
+  console.log("RRRRRR", roundData);
   return (
     <div className="report">
       {data && (
         <>
           <h2 className="reportTitle">Round {roundData.roundNumber}</h2>
-          <p className="reportP">Start Address: {roundData.startAddress}</p>
-          <p className="reportP">LPO: {roundData.lpo}</p>
-          <p className="reportP">Depot Bins: {roundData.lpo}</p>
+          <p className="genP">Start Address: {roundData.startAddress}</p>
+          <p className="genP">LPO: {roundData.lpo}</p>
+          <p className="genP">Depot Bins: {roundData.lpo}</p>
 
+          <h2 className="reportH2">Hazards</h2>
           <div className="hazardCards">
-            <h2 className="reportH2">Hazards</h2>
             {roundData.hazards.map((hazard) => (
               <div className="hazardCard" key={hazard._id}>
-                <p className="reportP">Type: {hazard.hazardType}</p>
-                <p className="reportP">Address: {hazard.address}</p>
+                <p className="reportP">{hazard.hazardType}</p>
+                <p className="reportP">{hazard.address}</p>
                 <p className="reportP">Message: {hazard.message}</p>
               </div>
             ))}
           </div>
           <div className="roundMapContainer">
-            <Map hazardData={roundData.hazards} />
+            <Map
+              hazardData={roundData.hazards}
+              center={{lat: roundData.lat, lng: roundData.lng}}
+              zoom={13}
+            />
           </div>
         </>
       )}

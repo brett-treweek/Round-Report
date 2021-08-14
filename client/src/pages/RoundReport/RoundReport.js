@@ -8,7 +8,7 @@ const RoundReport = () => {
     <div
       className="roundContainer"
       style={{
-        backgroundImage: "url(./icons/redCity.PNG)",
+        backgroundImage: "url(./icons/purpleCity.PNG)",
         backgroundPosition: "right center",
         backgroundSize: "cover",
       }}
