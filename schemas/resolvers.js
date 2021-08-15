@@ -41,15 +41,13 @@ const resolvers = {
 
       return { token, user };
     },
-    // updateUser: async (parent, args, context) => {
-    //   if (context.user) {
-    //     return User.findByIdAndUpdate(context.user.id, args, {
-    //       new: true,
-    //     });
-    //   }
+    
+    deleteHazard: async (parent, {args}) => {
+      console.log('TTTTTTTT',args);
+      return await Hazard.findByIdAndRemove({_id: args});
+       
+    },
 
-    //   throw new AuthenticationError('Not logged in');
-    // },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
       console.log("password:", password);

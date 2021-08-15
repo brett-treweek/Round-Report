@@ -39,6 +39,16 @@ export const ADD_USER = gql`
   }
 `;
 
+export const DELETE_HAZARD = gql`
+  mutation deleteHazard($_id: ID!){
+    deleteHazard(
+      _id: $_id
+    ){
+      _id
+    }
+  }
+`;
+
 export const ADD_HAZARD = gql`
   mutation addHazard(
     $roundNumber: Int!

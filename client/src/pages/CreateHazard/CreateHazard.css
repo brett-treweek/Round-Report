@@ -88,4 +88,32 @@
     border-radius: 10px;
     z-index: 50;
   }
-  
+  @media(max-width: 500px){
+    .formContainer{
+      height: auto;
+    }
+    .form{
+      width: 95vw;
+      height: 100%;
+    }
+    .label{
+      font-size: 20px;
+      font-weight: 300;
+      padding: 10px;
+    }
+    #rndNum, .searchBox, .select, .textArea{
+      width: 80vw;
+    }
+  }
+  @media(max-width: 780px){
+    .formContainer{
+      height: auto;
+    }
+    .form{
+      height: 100%;
+      width: 80vw;
+    }
+    #rndNum, .searchBox, .select, .textArea{
+      width: 60vw;
+    }
+  }

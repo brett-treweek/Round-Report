@@ -18,7 +18,34 @@
 }
 
 #prompt {
-  font-size: 30px;
+  font-size: 20px;
   padding: 1rem;
   color: #fff;
+}
+@media(max-width: 500px){
+  #prompt{
+    font-size: 16px;
+    font-weight: 200;
+  }
+  .app{
+    height: auto;
+  }
+  .content{
+    height: auto;
+  }
+  .homeContainer{
+    height: 85vh;
+  }
+
+}
+@media(max-width:780px){
+  .content{
+    height: auto;
+  }
+  .homeContainer{
+    height: 85vh;
+  }
+  .mapContainer{
+    height: 100%;
+  }
 }

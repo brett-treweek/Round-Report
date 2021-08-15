@@ -67,3 +67,43 @@ button:hover {
 .error-text {
   font-size: 30px;
 }
+
+@media(max-width: 500px){
+  .loginForm{
+    width: 95vw;
+    height: 79vh;
+  }
+  .loginTitle{
+    padding: 5px;
+    font-size: 20px;
+  }
+  .loginInput{
+    width: 250px;
+    height: 40px;
+    font-size: 16px;
+    margin-bottom: 1rem;
+  }
+  .button{
+    width: 200px;
+    height: 40px;
+    font-size: 16px;
+    margin-top: 1rem;
+  }
+  .loginLabel{
+    padding: 10px;
+    padding-bottom: 0;
+  }
+  .loginWrapper{
+    
+  }
+}
+@media(max-width:780px){
+  .button{
+    margin-top: 15px;
+    width: 40vw;
+    height: 50px;
+  }
+  .loginLabel{
+    padding: 10px;
+  }
+}

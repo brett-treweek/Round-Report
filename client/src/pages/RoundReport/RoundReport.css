@@ -10,3 +10,13 @@
     text-align: center;
     padding: 1rem;
 }
+@media(max-width: 500px){
+    .roundContainer{
+        height: auto;
+    }   
+}
+@media(max-width:780px){
+    .roundContainer{
+        height: auto;
+    }
+}

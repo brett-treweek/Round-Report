@@ -54,6 +54,8 @@ const typeDefs = gql`
 
     login(email: String!, password: String!): Auth
 
+    deleteHazard(_id: ID!): Hazard
+
     addHazard(
       roundNumber: Int!
       hazardType: String!

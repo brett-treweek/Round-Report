@@ -3,6 +3,49 @@
     width: 95%;
     margin: 2rem;
 }
+/* .infoWindow{
+    border: 2px solid black;
+} */
+.infoContainer{
+    padding:10px;
+    background-color: rgb(47, 0, 255);
+    border-radius: 5px;
+}
 .infoP{
-   color: black; 
+   color:#fff;
+   padding: 3px; 
+}
+.infoH3{
+    color: #fff;
+    font-weight: 400;
+}
+.gm-ui-hover-effect{
+    font-size: larger;
+}
+.infoDelete{
+    background-color: red;
+    color: #fff;
+    padding: 4px;
+    margin-top: 5px;
+    border: none;
+}
+.infoDelete:hover{
+    background-color: red;
+    color: #fff;
+    font-weight: 200;
+    border: none;
+}
+@media(max-width: 500px){
+    .map{
+        height: 500px;
+        width: 95%;
+    }
+    .content{
+        height: 100%;
+    }
+}
+@media(max-width:780px){
+    .map{
+        height: 400px;
+    }
 }
