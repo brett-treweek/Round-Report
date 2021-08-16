@@ -63,7 +63,7 @@ function Map(props) {
               key={marker._id}
               position={{ lat: marker.lat, lng: marker.lng }}
               icon={{
-                url: "./icons/alert.png",
+                url: "./icons/redwarning.png",
                 scaledSize: new window.google.maps.Size(25, 25),
               }}
               onClick={() => {

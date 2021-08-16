@@ -45,7 +45,6 @@ const resolvers = {
     deleteHazard: async (parent, {args}) => {
       console.log('TTTTTTTT',args);
       return await Hazard.findByIdAndRemove({_id: args});
-       
     },
 
     login: async (parent, { email, password }) => {

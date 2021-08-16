@@ -5,7 +5,6 @@ import Auth from "../../utils/auth";
 import "./Home.css";
 import { QUERY_HAZARDS } from "../../utils/queries";
 import { useQuery } from "@apollo/client";
-// import CreateHazard from "../../pages/CreateHazard/CreateHazard";
 
 const Home = () => {
   const { loading, data, error } = useQuery(QUERY_HAZARDS);
@@ -18,7 +17,7 @@ const Home = () => {
     lat: -32.03784,
     lng: 115.80174,
   };
-  const zoom = 13;
+  const zoom = 14;
   return (
     <div className="homeContainer">
       <div className="mapContainer">
