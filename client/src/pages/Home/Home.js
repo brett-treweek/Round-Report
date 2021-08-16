@@ -1,5 +1,3 @@
-// import { Fragment } from "react";
-// import { Link } from "react-router-dom";
 import Map from "../../components/Map/map";
 import Auth from "../../utils/auth";
 import "./Home.css";

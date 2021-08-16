@@ -5,9 +5,6 @@ import { LOGIN, ADD_USER } from "../../utils/mutations";
 import Auth from "../../utils/auth";
 import './Form.css'
 
-// import { Context } from '../../utils/GobalState'
-
-
 let initialSignupState = {
   firstName: "",
   lastName: "",
@@ -26,7 +23,6 @@ function Signup(props) {
   const [login, {error}] = useMutation(LOGIN);
   const [addUser] = useMutation(ADD_USER);
   const [isSignup, setIsSignup] = useState(false);
-  // const [state, setState] = useContext(Context)
 
 
   const handleSubmit = async (e) => {
@@ -64,7 +60,6 @@ function Signup(props) {
         Auth.login(token);
         const userDeets = mutationResponse.data.login.user
         localStorage.setItem('deets', JSON.stringify(userDeets));
-        // console.log("User Deets:",mutationResponse.data.login.user);
         const bbbbb = localStorage.getItem('deets')
         console.log('local storage deets:', JSON.parse(bbbbb));
       } catch (error) {

@@ -29,7 +29,6 @@ function Search() {
       },
     });
   
-    // console.log("autocomplete ready:", ready);
     const [ coords, setCoords] = useContext(Context);
     return (
       <Combobox
@@ -52,7 +51,6 @@ function Search() {
           } catch (error) {
             console.log("autocomplete error", error);
           }
-          // console.log(coords);
         }}
       >
         <ComboboxInput

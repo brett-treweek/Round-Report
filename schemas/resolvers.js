@@ -43,21 +43,16 @@ const resolvers = {
     },
     
     deleteHazard: async (parent, {args}) => {
-      console.log('TTTTTTTT',args);
       return await Hazard.findByIdAndRemove({_id: args});
     },
 
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
-      console.log("password:", password);
-      console.log("user:", user);
       if (!user) {
         throw new AuthenticationError("Incorrect credentials");
       }
 
       const correctPw = await user.isCorrectPassword(password);
-
-      console.log("correctPassword", correctPw);
 
       if (!correctPw) {
         throw new AuthenticationError("Incorrect credentials");
@@ -69,10 +64,7 @@ const resolvers = {
     },
 
     addHazard: async (parent, args, context) => {
-      console.log(context.user);
       try {
-        console.log(args);
-        // use context not local storage
         const roundNumber = args.roundNumber;
         const hazard = await Hazard.create(args);
 
@@ -80,7 +72,6 @@ const resolvers = {
           { _id: context.user._id },
           { $push: { hazards: hazard._id } }
         );
-
         const data = await Round.findOneAndUpdate(
           { roundNumber },
           { $push: { hazards: hazard._id } }

@@ -14,7 +14,6 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import SignIn from "./pages/SignIn/SignIn";
 
-// using http link with apollo server
 const httpLink = createHttpLink({
   uri: "/graphql",
 });
