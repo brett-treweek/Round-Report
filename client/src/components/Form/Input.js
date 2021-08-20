@@ -1,6 +1,7 @@
 import React from "react";
 import './Form.css'
 
+// create reusable input for login and signup
 const Input = ({
   type,
   label,

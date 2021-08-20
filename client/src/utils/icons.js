@@ -1,5 +1,6 @@
+// Function used to choose appropriate icon for hazard markers. This function hasnt been implemented yet.
 export default function icons(props) {
-    // console.log(props);
+
   switch (props.hazardType) {
     case "Aggresive Dog":
         console.log('woof');

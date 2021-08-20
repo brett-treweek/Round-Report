@@ -1,3 +1,4 @@
+// GQL/apollo-client mutations
 import { gql } from '@apollo/client';
 
 export const LOGIN = gql`

@@ -1,3 +1,4 @@
+// Json Web Token middleware.
 const jwt = require('jsonwebtoken');
 
 const secret = 'mysecretsshhhhh';

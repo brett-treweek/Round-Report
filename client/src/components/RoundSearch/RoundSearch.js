@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import Report from "../Report/Report";
 import "./RoundSearch.css";
 
-
+// Component for seraching for round number.
+// Only sets state of input value on click of submit, which then dynamically updates round report with round number as props.
 const RoundSearch = () => {
   const [requestedRound, setRequestedRound] = useState(null);
   const [change, setChange] = useState(null)
@@ -14,10 +15,9 @@ const RoundSearch = () => {
   
 
   function handleOnClick(e) {
+    e.preventDefault()
     setRequestedRound(change)
-      e.preventDefault()
   }
-  console.log("requestedRound:", requestedRound);
 
   return (
     <div className="reportContainer">

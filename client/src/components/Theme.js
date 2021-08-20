@@ -1,3 +1,4 @@
+// Custom theme for google map
 export default  
 
 [

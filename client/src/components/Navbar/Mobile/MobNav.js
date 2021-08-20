@@ -4,6 +4,7 @@ import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import "../Nav.css";
 import Links from "../Links";
 
+// mobile navigation hamburger uses state to change icons.
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
 

@@ -1,3 +1,4 @@
+// Auth class component contains functions relating to handling JWT and whether user is logged in.
 import decode from 'jwt-decode';
 
 

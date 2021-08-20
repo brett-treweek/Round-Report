@@ -1,3 +1,5 @@
+// Homepage- Gets all hazard data and passes data as props to map component along with center co-ordinates and zoom level.
+// User prompted to sign in to add hazards.
 import Map from "../../components/Map/map";
 import Auth from "../../utils/auth";
 import "./Home.css";

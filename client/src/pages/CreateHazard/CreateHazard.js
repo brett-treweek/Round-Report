@@ -1,3 +1,4 @@
+// Component/Page for creating new hazard, uses autocomplete search component.
 import React, { useState, useContext } from "react";
 import { Context } from "../../utils/GobalState";
 import { ADD_HAZARD } from "../../utils/mutations";
@@ -16,24 +17,25 @@ let initialHazardState = {
 const libs = [process.env.REACT_APP_LIBRARIES];
 const key = [process.env.REACT_APP_GOOGLE_API_KEY];
 
-function CreateHazard(props) {
+function CreateHazard() {
+  // Co-ordinates set from autocomplete search via global context.
   const [coords, setCoords] = useContext(Context);
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: key,
     libraries: libs,
   });
 
-  console.log("coords data:", coords);
+  // State used to record data from form.
   const [hazardData, setHazardData] = useState(initialHazardState);
   const [addHazard] = useMutation(ADD_HAZARD);
 
+  // Function to add hazard to database, redirects to homepage after submission.
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log("hazard form data:", hazardData);
     const data = localStorage.getItem('deets')
     const userDeets = JSON.parse(data)
-    console.log("createHazard userdeets",userDeets);
+
     try {
       const { data } = await addHazard({
         variables: {
@@ -54,6 +56,7 @@ function CreateHazard(props) {
     }
   };
 
+  // Function to handle change of form data, sets input values to state.
   const handleChange = (e) => {
     setHazardData({ ...hazardData, [e.target.name]: e.target.value });
   };

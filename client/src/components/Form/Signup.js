@@ -3,8 +3,9 @@ import Input from "./Input";
 import { useMutation } from "@apollo/client";
 import { LOGIN, ADD_USER } from "../../utils/mutations";
 import Auth from "../../utils/auth";
-import './Form.css'
+import "./Form.css";
 
+// setting initial state for component
 let initialSignupState = {
   firstName: "",
   lastName: "",
@@ -17,18 +18,17 @@ let initialLoginState = {
   password: "",
 };
 
-function Signup(props) {
+function Signup() {
   const [signupData, setSignupData] = useState(initialSignupState);
   const [loginData, setLoginData] = useState(initialLoginState);
-  const [login, {error}] = useMutation(LOGIN);
+  const [login, { error }] = useMutation(LOGIN);
   const [addUser] = useMutation(ADD_USER);
   const [isSignup, setIsSignup] = useState(false);
 
-
+  // function to handle submit of login or signup.
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    console.log(signupData, loginData);
+    // signup mutation.
     if (isSignup) {
       try {
         const mutationResponse = await addUser({
@@ -38,16 +38,18 @@ function Signup(props) {
             firstName: signupData.firstName,
             lastName: signupData.lastName,
           },
-        }); 
-        const userDeets = mutationResponse.data.addUser.user
-        localStorage.setItem('deets', JSON.stringify(userDeets));       
+        });
+        const userDeets = mutationResponse.data.addUser.user;
+        // set user details in local storage
+        localStorage.setItem("deets", JSON.stringify(userDeets));
         const token = mutationResponse.data.addUser.token;
+        // using jwt
         Auth.login(token);
-
       } catch (error) {
         console.log("error signing up:", error);
       }
     } else {
+      // login mutation.
       try {
         const mutationResponse = await login({
           variables: {
@@ -55,32 +57,39 @@ function Signup(props) {
             password: loginData.password,
           },
         });
-        console.log("MutationResponse:", mutationResponse.data.login.user._id);
         const token = mutationResponse.data.login.token;
+        // using jwt
         Auth.login(token);
-        const userDeets = mutationResponse.data.login.user
-        localStorage.setItem('deets', JSON.stringify(userDeets));
-        const bbbbb = localStorage.getItem('deets')
-        console.log('local storage deets:', JSON.parse(bbbbb));
+        // set user details in local storage
+        const userDeets = mutationResponse.data.login.user;
+        localStorage.setItem("deets", JSON.stringify(userDeets));
       } catch (error) {
-        console.log("Login Failed:",error);
+        console.log("Login Failed:", error);
       }
     }
   };
-
+// function to handle signup input value change
   const handleSignup = (e) => {
     setSignupData({ ...signupData, [e.target.name]: e.target.value });
   };
+  // function to handle login input value change
   const handleLogin = (e) => {
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
   };
-
+// function to switch between login and signup
   const switchSign = () => {
     setIsSignup((prevIsSignup) => !prevIsSignup);
   };
 
   return (
-    <div className="loginContainer" style={{backgroundImage: "url(./icons/purpleCity.PNG)", backgroundPosition: "right center", backgroundSize:"cover"}}>
+    <div
+      className="loginContainer"
+      style={{
+        backgroundImage: "url(./icons/purpleCity.PNG)",
+        backgroundPosition: "right center",
+        backgroundSize: "cover",
+      }}
+    >
       <h1 className="loginTitle">{isSignup ? "Sign Up" : "Sign In"}</h1>
       <form onSubmit={handleSubmit} className="loginForm">
         {isSignup && (
@@ -112,7 +121,7 @@ function Signup(props) {
           handleChange={isSignup ? handleSignup : handleLogin}
           label="password"
           type="password"
-          autocomplete="password" 
+          autocomplete="password"
         />
         {error ? (
           <div>

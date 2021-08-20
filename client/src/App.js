@@ -33,7 +33,6 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 function App() {
-
   return (
     <ApolloProvider client={client}>
       <Router>
@@ -46,7 +45,6 @@ function App() {
                 <Route exact path="/round-report" component={RoundReport} />
                 <Route exact path="/create-hazard" component={CreateHazard} />
                 <Route exact path="/signIn" component={SignIn} />
-                
               </Switch>
             </div>
             <Footer />

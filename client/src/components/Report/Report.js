@@ -4,18 +4,18 @@ import Map from "../Map/map";
 import { QUERY_ROUND } from "../../utils/queries";
 import { useQuery } from "@apollo/client";
 
-const Report = (props) => {
-  console.log("props", props);
 
-  const roundHazards = props.hazards;
-  console.log("round hazard data:", roundHazards);
+// Component to dynamically generate round report. Takes round number as props to use in query for round data.
+// Hazard cards are created by mapping over roundData.hazards
+// Map component is used with props for centering, hazardData for info windows, and zoom level.
+const Report = (props) => {
 
   const { loading, data, error } = useQuery(QUERY_ROUND, {
     variables: {
       roundNumber: parseInt(props.roundData.roundNumber),
     },
   });
-  console.log("data:", data);
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>error fetching round data {error}</p>;
 

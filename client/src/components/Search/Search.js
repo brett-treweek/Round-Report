@@ -1,3 +1,7 @@
+// Search autocomplete component using google places API for searching addresses.
+// Google geocoding API is used to convert addresses into co-ordinates for marker placement on map.
+// Global context is used to set co-ordinates.
+
 import React, {useContext} from "react";
 import { Context } from "../../utils/GobalState"
 import usePlacesAutocomplete, {
@@ -8,7 +12,6 @@ import usePlacesAutocomplete, {
     Combobox,
     ComboboxInput,
     ComboboxPopover,
-    // ComboboxList,
     ComboboxOption,
   } from "@reach/combobox";
   import "@reach/combobox/styles.css";
@@ -37,10 +40,8 @@ function Search() {
           clearSuggestions()
           try {
             const results = await getGeocode({ address });
-            console.log(results);
             const location = results[0].formatted_address;
             const { lat, lng } = await getLatLng(results[0]);
-            console.log(lat, lng);
             const data = {
               lat: lat,
               lng: lng,

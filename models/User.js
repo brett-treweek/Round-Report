@@ -30,7 +30,7 @@ const userSchema = new Schema({
   ],
 });
 
-
+// Hashing passwords with bcrypt.
 userSchema.pre('save', async function (next) {
   if (this.isNew || this.isModified('password')) {
     const saltRounds = 10;
@@ -40,6 +40,7 @@ userSchema.pre('save', async function (next) {
   next();
 });
 
+// Checking if password is correct.
 userSchema.methods.isCorrectPassword = async function (password) {
   console.log(password, this.password);
   const match = await bcrypt.compare(password, this.password);

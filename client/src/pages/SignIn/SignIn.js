@@ -1,3 +1,4 @@
+// Sign in page- renders signup form component.
 import { Fragment } from "react";
 import Signup from "../../components/Form/Signup";
 import "./SignIn.css";

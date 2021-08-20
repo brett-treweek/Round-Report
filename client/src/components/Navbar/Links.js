@@ -2,6 +2,10 @@ import { NavLink } from "react-router-dom";
 import "./Nav.css";
 import Auth from "../../utils/auth";
 
+// Links component is used by both mobile and desktop navigation, and uses props to indicate if mobile or not.
+// If mobile the nav will be closed when any link is clicked.
+// Add hazard link is only displayed if logged in.
+// Sign in / Sign out is dynamic depending on logged in status.
 const Links = (props) => {
 
   const signOut = () => {

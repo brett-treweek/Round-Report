@@ -1,3 +1,4 @@
+// THIS COMPONENT IS STILL IN DEVELOPMENT
 import React from "react";
 import "./Map.css";
 import {
@@ -7,10 +8,10 @@ import {
   InfoWindow,
 } from "@react-google-maps/api";
 import Theme from "../Theme";
+import Auth from "../../utils/auth";
 // import icons from '../../utils/icons'
 // import { DELETE_HAZARD } from "../../utils/mutations";
 // import { useMutation } from "@apollo/client";
-import Auth from "../../utils/auth";
 // require("default-passive-events");
 
 const containerStyle = {
@@ -18,25 +19,27 @@ const containerStyle = {
   height: "100%",
 };
 
-// const center = {
-//   lat: -32.03784,
-//   lng: 115.80174,
-// };
+// referencing environmental variables.
 const libs = [process.env.REACT_APP_LIBRARIES];
 const key = [process.env.REACT_APP_GOOGLE_API_KEY];
 const mapTheme = Theme;
 
+// Map component takes hazard data as props.
 function Map(props) {
   // const [deleteHazard] = useMutation(DELETE_HAZARD);
+
+  // script to load google maps.
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: key,
     libraries: libs,
   });
+  // using state to set selected markers on map.
   const [selected, setSelected] = React.useState(null);
 
   if (loadError) return <p>"error loading google script"</p>;
   if (!isLoaded) return <p>"Loading..."</p>;
 
+  // function to delete hazards.
   const handleDelete = async (e) => {
     //   e.preventDefault()
     //   try {
